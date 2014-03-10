@@ -1,0 +1,4 @@
+g++: /usr/bin/g++-4.8
+gcc: /usr/bin/gcc-4.8
+c++: /usr/bin/g++-4.8
+cc:  /usr/bin/gcc-4.8

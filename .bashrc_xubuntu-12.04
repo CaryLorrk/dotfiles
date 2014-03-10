@@ -129,7 +129,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export EDITOR=vim
+if type "vim" > /dev/null; then
+    export EDITOR=vim
+fi
 
 ## Aliases
 if [ -d $HOME/.bash/aliases ]; then

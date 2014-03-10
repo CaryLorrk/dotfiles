@@ -71,7 +71,12 @@ Bundle 'carylorrk/vim-autotags-gtags'
 " Comment and uncomment
 Bundle 'scrooloose/nerdcommenter'
 
-" For C++
+" Ack for vim (grep for source code)
+" Need Ack (ubuntu: apt-get install ack-grep)
+Bundle 'mileszs/ack.vim'
+
+" Maintains a history of previous yanks, changes and deletes
+Bundle 'vim-scripts/YankRing.vim'
 
 " Color Scheme
 Bundle 'chriskempson/vim-tomorrow-theme'
@@ -264,7 +269,7 @@ endfunction
 "map nss :setlocal nospell!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GNU global settings for vim           
+" Cscope settings for vim           
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
@@ -393,12 +398,6 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) 
 let g:UltiSnipsExpandTrigger="<Leader><TAB>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command-T setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap <silent> <Leader><Leader>t :CommandT <CR>
-"nnoremap <silent> <Leader><Leader>b :CommandTBuffer <CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader><Leader>e :NERDTreeToggle <CR>
@@ -433,12 +432,6 @@ nmap \ms :marks <CR>
 nmap \md :delm! <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => SimpleCompile setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nmap <F5> :SCCompile
-" nmap <F6> :SCCompileRun 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<Leader><Leader>f'
@@ -453,3 +446,10 @@ nmap <Leader><Leader>b :CtrlPBuffer <CR>
 nmap <Leader><Leader>r :CtrlPMRU <CR>
 nmap <Leader><leader>tg :CtrlPTag <CR>
 nmap <Leader><leader>tl :CtrlPBufTag <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YankRing setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:yankring_replace_n_pkey = '<Leader><Leader>p'
+let g:yankring_replace_n_nkey = '<Leader><Leader>n'
+nnoremap <silent> <Leader><Leader>y :YRShow<CR>

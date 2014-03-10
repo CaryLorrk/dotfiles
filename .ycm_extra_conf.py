@@ -20,8 +20,9 @@ flags = [
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
 # For a C project, you would set this to 'c' instead of 'c++'.
-'-std', 'c++11',
-'-x', 'c++'
+'-std=c++11',
+'-x', 'c++',
+'-I', 'include'
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
