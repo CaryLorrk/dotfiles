@@ -453,3 +453,4 @@ nmap <Leader><leader>tl :CtrlPBufTag <CR>
 let g:yankring_replace_n_pkey = '<Leader><Leader>p'
 let g:yankring_replace_n_nkey = '<Leader><Leader>n'
 nnoremap <silent> <Leader><Leader>y :YRShow<CR>
+let g:yankring_history_dir = $HOME."/.vim"
