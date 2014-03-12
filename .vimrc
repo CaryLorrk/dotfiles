@@ -1,6 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Install Vundle
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -21,6 +21,9 @@ Bundle 'gmarik/vundle'
 " Autocomplete engine
 Bundle 'Valloric/YouCompleteMe' 
 " YouCompleteMe needs some prerequisites.
+" sudo apt-get install build-essential cmake python-dev
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.sh --clang-completer
 " http://valloric.github.io/YouCompleteMe
 " if jedi is not founded, run 'git submodule update --init --recursive' at YCM
 
@@ -35,6 +38,8 @@ Bundle 'scrooloose/syntastic'
 
 " Snippet managemet (Code template)
 Bundle 'SirVer/ultisnips' 
+" Default snippets
+Bundle 'honza/vim-snippets'
 
 " Simpler way to move
 Bundle 'Lokaltog/vim-easymotion' 
@@ -78,14 +83,42 @@ Bundle 'mileszs/ack.vim'
 " Maintains a history of previous yanks, changes and deletes
 Bundle 'vim-scripts/YankRing.vim'
 
+" Session management
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
+
+" Git for VIM
+Bundle 'tpope/vim-fugitive'
+
+" Asynchronous build and test dispatcher
+Bundle 'tpope/vim-dispatch'
+
+" Markdown syntex
+Bundle 'tpope/vim-markdown'
+
+" Local vimrc (.lvimrc)
+Bundle 'vim-scripts/localvimrc'
+
+" Generate Doxygen documentation for C/C++, Python
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+
+" Filetype plugin to help edit XML files
+Bundle 'sukima/xmledit'
+
+" Eclipse like task list
+Bundle 'vim-scripts/TaskList.vim'
+
+" Lean & mean status/tabline
+"Bundle 'bling/vim-airline'
+
 " Color Scheme
 Bundle 'chriskempson/vim-tomorrow-theme'
 
 filetype plugin indent on     " required!
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Sets how many lines of history VIM has to remember
 set history=1000
@@ -99,26 +132,9 @@ set ssop-=folds      " do not store folds
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Regen tags
-"if has("cscope")
-    "nmap <F8> :!find . -type f -regextype posix-egrep -regex ".*\.(h\|c\|cpp)$" -print0 \| xargs -0 ctags --c++-kinds=+pl --fields=+iaS --extra=+q; rm -f ./cscope.*; find . -type f -regextype posix-egrep -regex ".*\.(h\|c\|cpp)$" -print \| sed 's,^\./,,' > ./cscope.files; cscope -b   <CR>
-"else
-    "nmap <F8> :!find . -type f -regextype posix-egrep -regex ".*\.(h\|c\|cpp)$" -print0 \| xargs -0 ctags --c++-kinds=+pl --fields=+iaS --extra=+q <CR>
-"endif
-
-" Debug after make file
-nmap ,n :cn <CR>
-nmap ,p :cp <CR>
-nmap ,l :cl <CR>
+let mapleader = ","
 
 nmap <C-S> :w <CR>
-
-" global tags
-set tags+=$HOME/.vim/bundle/GlobalCppTags/tags
-
-"if has("cscope")
-"    :cs add $HOME/.vim/bundle/GlobalCppTags/cscope.out
-"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files/Backups
@@ -127,16 +143,28 @@ set tags+=$HOME/.vim/bundle/GlobalCppTags/tags
 set backup
 
 " where to put backup file (don't forget to make a backup directory)
-set backupdir=$HOME/.tmp/vim/backup,./.backup,.,/tmp
+let s:backupdir = $HOME . "/.vim/backup"
+if !isdirectory(s:backupdir)
+    call mkdir(s:backupdir, "p")
+endif
+let &backupdir = s:backupdir . ",$HOME/.tmp/vim/backup,./.backup,.,/tmp"
 
 " directory is the directory for temp file
-set directory=$HOME/.tmp/vim/tmp,.,/var/tmp,/tmp
+let s:directory=$HOME."/.vim/tmp"
+if !isdirectory(s:directory)
+    call mkdir(s:directory, "p")
+endif
+let &directory = s:directory . ",$HOME/.tmp/vim/tmp,.,/var/tmp,/tmp"
 
 " Undo persistence
 set undofile
-set undodir=$HOME/.tmp/vim/undofile
+let s:undodir = $HOME . "/.vim/undofile"
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "p")
+endif
+let &undodir = s:undodir
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the curors - when moving vertical
@@ -171,18 +199,17 @@ set novisualbell
 set t_vb=
 set tm=500
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
-colorscheme Tomorrow
+colorscheme Tomorrow-Night
 set background=dark
 set cursorline
-hi LineNr ctermfg=DarkGray
-hi CursorLine term=bold cterm=bold ctermbg=Black
+hi CursorLine term=bold cterm=bold 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set shiftwidth=4
@@ -220,7 +247,7 @@ function! VisualSearch(direction) range
 	let @" = l:saved_reg
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart way to move btw. windows
@@ -261,7 +288,7 @@ function! HasPaste()
 	endif
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Pressing ,ss will toggle and untoggle spell checking
@@ -279,25 +306,22 @@ if has("cscope")
     set cscopetag
     set csto=0
 
-    " use cscope
-    "if filereadable("cscope.out")
-        "cs add cscope.out
-    "elseif $CSCOPEDB != ""
-        "cs add $CSCOPEDB
-    "endif
-
-    " use global
-    set cscopeprg=gtags-cscope
-
-    " check cscope for definition of a symbol before checking ctags: set to 1
-    " if you want the reverse search order.
-
-    " add any cscope database in current directory
-    if filereadable("GTAGS")
-        cs add GTAGS
-    " else add the database pointed to by environment variable 
-    elseif $GTAGS != ""
-        cs add $GTAGS
+    if executable("gtags")
+        set cscopeprg=gtags-cscope
+        let g:autotags_cscope_or_gtags = "gtags"
+        let g:autotags_cscope_exe = "gtags"
+        let g:autotags_global_exe = "global"
+        if filereadable("GTAGS")
+            cs add GTAGS
+        elseif $GTAGS != ""
+            cs add $GTAGS
+        endif
+    else
+        if filereadable("cscope.out")
+            cs add cscope.out
+        elseif $CSCOPEDB != ""
+            cs add $CSCOPEDB
+        endif
     endif
 
     " show msg when any other cscope db added
@@ -380,7 +404,7 @@ if has("cscope")
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omnicpp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -392,46 +416,46 @@ let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
 let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ultisnips setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<Leader><TAB>"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader><Leader>e :NERDTreeToggle <CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TagBar setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader><Leader>l :TagbarToggle <CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gundo setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader><Leader>u :GundoToggle <CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => EazyMotion setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_mapping_f = 'f'
 let g:EasyMotion_mapping_F = 'F'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Multiple Cursors setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:multi_cursor_start_key = '<C-G>'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mark setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:showmarks_enable = 0
-nmap \ms :marks <CR>
-nmap \md :delm! <CR>
+nmap <Leader>ms :marks <CR>
+nmap <Leader>md :delm! <CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<Leader><Leader>f'
@@ -447,10 +471,53 @@ nmap <Leader><Leader>r :CtrlPMRU <CR>
 nmap <Leader><leader>tg :CtrlPTag <CR>
 nmap <Leader><leader>tl :CtrlPBufTag <CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YankRing setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:yankring_replace_n_pkey = '<Leader><Leader>p'
 let g:yankring_replace_n_nkey = '<Leader><Leader>n'
 nnoremap <silent> <Leader><Leader>y :YRShow<CR>
 let g:yankring_history_dir = $HOME."/.vim"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Autotags setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:autotagsdir = $HOME . "/.vim/autotags/byhash"
+let g:autotags_global = $HOME . "/.vim/autotags/global_tags"
+if !isdirectory(g:autotagsdir)
+    call mkdir(g:autotagsdir, "p")
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Session setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+fun! PathHash(val)
+    return substitute(system("sha1sum", a:val), " .*", "", "")
+endfun
+
+let s:hashed_path = PathHash(getcwd())
+nmap <Leader><Leader>ss :execute "SaveSession" PathHash(getcwd()) <CR>
+nmap <Leader><Leader>so :execute "OpenSession" PathHash(getcwd()) <CR>
+nmap <Leader><Leader>sc :execute "CloseSession" <CR>
+nmap <Leader><Leader>sd :execute "DeleteSession" PathHash(getcwd()) <CR>
+nmap <Leader><Leader>sr :execute "RestartVim" <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Dispatcher setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Debug after make
+nmap <Leader>l :Copen <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader> yy :YcmDiags <CR>
+nmap <Leader> yf :YcmForceCompileAndDiagnostics <CR>
+nmap <Leader> yg :YcmCompleter YcmForceCompileAndDiagnostics <CR>
+nmap <Leader> yc :GoToDeclaration <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => TaskList setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>v <Plug>TaskList 
+
