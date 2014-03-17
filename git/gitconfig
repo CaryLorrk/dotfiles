@@ -1,0 +1,37 @@
+[user]
+    name      = CaryLorrk
+    email     = carylorrk@gmail.com
+
+# Vim as difftool
+[diff]
+	tool      = vimdiff
+[merge]
+	tool      = vimdiff
+[difftool]
+	prompt    = false
+
+
+# Color for dark background
+[color "branch"]
+	current   = yellow bold
+	remote    = cyan bold
+[color "diff"]
+	new       = yellow bold
+	old       = red bold
+	meta      = cyan bold
+	frag      = white bold
+	commit    = white bold
+[color "status"]
+	added     = yellow bold
+	changed   = cyan bold
+	untracked = red bold
+
+[alias]
+    l = log
+    st = status
+    ci = commit --verbose
+    co = checkout
+    aa = add --all
+    b = branch
+    amend = commit --amend
+    contains = branch --contains

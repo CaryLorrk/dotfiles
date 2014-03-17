@@ -1,0 +1,354 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Vundle                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" install Vundle
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Many plugins work with python >= 2.6
+" Check if vim is compiled with python and you have python installed
+" :echo has("python")
+
+" Vim plugin management
+Bundle 'gmarik/vundle'
+
+" Autocomplete engine
+Bundle 'Valloric/YouCompleteMe'
+" YouCompleteMe needs some prerequisites.
+" sudo apt-get install build-essential cmake python-dev
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.sh --clang-completer
+" if jedi is not founded, run 'git submodule update --init --recursive' at YCM
+
+" Autocomplete
+" Bundle 'Shougo/neocomplcache.vim'
+
+" Fuzzy File Finder
+Bundle 'kien/ctrlp.vim'
+
+" Syntax checking
+Bundle 'scrooloose/syntastic'
+
+" Snippet managemet (Code template)
+Bundle 'SirVer/ultisnips'
+" Default snippets
+Bundle 'honza/vim-snippets'
+
+" Simpler way to move
+Bundle 'Lokaltog/vim-easymotion'
+
+" A Vim alignment plugin
+Bundle 'junegunn/vim-easy-align'
+
+" Show undo tree
+Bundle 'sjl/gundo.vim'
+
+" Filesystem explorer
+Bundle 'vim-scripts/The-NERD-tree'
+
+" Auto closing tool
+"Bundle 'Raimondi/delimitMate'
+Bundle 'jiangmiao/auto-pairs'
+
+" Sublime Text-like multiple selection
+Bundle 'terryma/vim-multiple-cursors'
+
+" Surround
+Bundle 'tpope/vim-surround'
+
+" Helpers for UNIX
+Bundle 'tpope/vim-eunuch'
+
+" Provides additional text objects
+Bundle 'wellle/targets.vim'
+
+" Converts all compiler errors into signs
+Bundle 'vim-scripts/errormarker.vim'
+
+" Taglist replacement
+Bundle 'vim-scripts/Tagbar'
+
+" Ctags and cscope/global management
+Bundle 'carylorrk/vim-autotags-gtags'
+
+" Comment and uncomment
+Bundle 'scrooloose/nerdcommenter'
+
+" Ack for vim (grep for source code)
+" Need Ack (ubuntu: apt-get install ack-grep)
+Bundle 'mileszs/ack.vim'
+
+" Maintains a history of previous yanks, changes and deletes
+Bundle 'vim-scripts/YankRing.vim'
+
+" Session management
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
+
+" Git for VIM
+Bundle 'tpope/vim-fugitive'
+" Shows a git diff in the gutter (sign column)
+Bundle 'airblade/vim-gitgutter'
+" Git runtime files
+Bundle 'tpope/vim-git'
+
+" Asynchronous build and test dispatcher
+Bundle 'tpope/vim-dispatch'
+
+" Markdown Vim Mode
+Bundle 'plasticboy/vim-markdown'
+
+" Local vimrc (.lvimrc)
+Bundle 'vim-scripts/localvimrc'
+
+" .tmux.conf syntax highlighting
+Bundle 'Keithbsmiley/tmux.vim'
+
+" Generate Doxygen documentation for C/C++, Python
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+
+" Eclipse like task list
+Bundle 'vim-scripts/TaskList.vim'
+
+" Lean & mean status/tabline
+" Need patched font, see
+" https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
+Bundle 'bling/vim-airline'
+
+" Airline for tmux
+"Bundle 'edkolev/tmuxline.vim'
+
+" Airline for bash
+"Bundle 'edkolev/promptline.vim'
+
+" A Narrow Region Plugin likes Emacs Narrow Region
+Bundle 'chrisbra/NrrwRgn'
+
+" Vim filetype detection by the shebang
+Bundle 'vitalk/vim-shebang'
+
+" Repeat previous action
+Bundle 'tpope/vim-repeat'
+
+" Use CTRL-A/CTRL-X to increment dates, times, and more
+Bundle 'tpope/vim-speeddating'
+
+" Execute URLs, footnotes, open emails, organize ideas
+Bundle 'vim-scripts/utl.vim'
+
+" calendar vimscript
+Bundle 'mattn/calendar-vim'
+
+" Text outlining and task management
+"Bundle 'jceb/vim-orgmode'
+
+" Ansi escape sequences concealed, but highlighted as specified
+Bundle 'sjl/AnsiEsc.vim'
+
+" Easily search for, substitute, and abbreviate multiple variants of a word
+Bundle 'tpope/vim-abolish'
+
+" Text objects based on indentation level
+Bundle 'michaeljsmith/vim-indent-object'
+
+" Create text objects
+Bundle 'kana/vim-textobj-user'
+
+" Color Scheme
+Bundle 'chriskempson/vim-tomorrow-theme'
+
+" A fancy start screen
+Bundle 'mhinz/vim-startify'
+
+" Search Github and clone repos
+Bundle 'gmarik/github-search.vim'
+
+" Enabling opening a file in a given line
+Bundle 'bogado/file-line'
+
+" Visually displaying indent levels in code
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" Run commands quickly
+Bundle 'thinca/vim-quickrun'
+
+" Write HTML in a CSS-like syntax
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+Bundle 'klen/python-mode'
+
+filetype plugin indent on     " required!
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Ultisnips setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<LocalLeader><TAB>"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              NERDTree setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader><Leader>e :NERDTreeToggle <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Tagbar setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader><Leader>l :TagbarToggle   <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Gundo setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader><Leader>u :GundoToggle    <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Easymotion setting                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_leader_key  = '<Leader>'
+let g:EasyMotion_mapping_f   = 'f'
+let g:EasyMotion_mapping_F   = 'F'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                          Multiple cursors setting                          "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:multi_cursor_start_key = '<C-G>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               CtrlP setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map               = '<Leader><Leader>f'
+let g:ctrlp_cmd               = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_regexp            = 0
+let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
+let g:ctrlp_switch_buffer     = 0
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+nmap <Leader><Leader>b  :CtrlPBuffer <CR>
+nmap <Leader><Leader>r  :CtrlPMRU    <CR>
+nmap <Leader><leader>tg :CtrlPTag    <CR>
+nmap <Leader><leader>tl :CtrlPBufTag <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              YankRing setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:yankring_replace_n_pkey = '<Leader><Leader>p'
+let g:yankring_replace_n_nkey = '<Leader><Leader>n'
+let g:yankring_history_dir    = $HOME."/.vim"
+nnoremap <silent> <Leader><Leader>y :YRShow <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Autotags setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:autotagsdir     = $HOME . "/.vim/autotags/byhash"
+let g:autotags_global = $HOME . "/.vim/autotags/global_tags"
+
+if !isdirectory(g:autotagsdir)
+    call mkdir(g:autotagsdir, "p")
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Session setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+fun! PathHash(val)
+    return substitute(system("sha1sum", a:val), " .*", "", "")
+endfun
+
+let s:hashed_path = PathHash(getcwd())
+nmap <Leader><Leader>ss :execute "SaveSession" PathHash(getcwd())   <CR>
+nmap <Leader><Leader>so :execute "OpenSession" PathHash(getcwd())   <CR>
+nmap <Leader><Leader>sc :execute "CloseSession"                     <CR>
+nmap <Leader><Leader>sd :execute "DeleteSession" PathHash(getcwd()) <CR>
+nmap <Leader><Leader>sr :execute "RestartVim"                       <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Dispatch setting                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Debug after make
+nmap <Leader>l :Copen <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           YouCompleteMe setting                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader> yy :YcmDiags                                   <CR>
+nmap <Leader> yf :YcmForceCompileAndDiagnostics              <CR>
+nmap <Leader> yg :YcmCompleter YcmForceCompileAndDiagnostics <CR>
+nmap <Leader> yc :GoToDeclaration                            <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              TaskList setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>v <Plug>TaskList
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Utl setting                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:utl_cfg_hdl_mt_generic      = "silent !xdg-open %p"
+let g:utl_cfg_hdl_scm_http_system = "silent !xdg-open %u"
+let g:utl_cfg_hdl_mt_text_html    = 'VIM'
+let g:utl_cfg_hdl_scm_http        = g:utl_cfg_hdl_scm_http_system
+nmap <Leader>uu  :Utl                                                      <CR>
+nmap <Leader>uhs :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http_system <CR>
+nmap <Leader>uhw :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http__wget  <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Calendar setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:calendar_keys = {
+            \ 'do_action'       : 'o',
+            \ 'goto_next_month' : ']m',
+            \ 'goto_prev_month' : '[m',
+            \ 'goto_next_year'  : ']y',
+            \ 'goto_prev_year'  : '[y' }
+let g:calendar_diary=$HOME.'/.vim/diary'
+if !isdirectory(g:calendar_diary)
+    call mkdir(g:calendar_diary, "p")
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Airline setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts            = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:tmuxline_theme                     = 'iceberg'
+let g:promptline_theme                   = 'airline_insert'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             EasyAlign setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vmap <Enter>   <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+ let g:easy_align_delimiters = {
+\ '>': { 'pattern': '>>\|=>\|>' },
+\ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+\ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
+\ ']': {
+\     'pattern':       '[[\]]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ ')': {
+\     'pattern':       '[()]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ 'd': {
+\     'pattern': ' \(\S\+\s*[;=]\)\@=',
+\     'left_margin': 0,
+\     'right_margin': 0
+\   }
+\ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Tomorrow setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme Tomorrow-Night
+set background=dark
+set cursorline
+hi CursorLine term=bold cterm=bold

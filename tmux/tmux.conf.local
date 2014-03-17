@@ -1,0 +1,97 @@
+set -g history-limit 32768
+set -g prefix M-a
+unbind C-b
+bind M-a send-prefix
+bind-key a send-prefix
+
+bind-key -n M-r \
+  source-file ~/.tmux.conf \; \
+    display 'source-file ~/.tmux.conf'
+
+    set-window-option -g mode-keys vi
+    bind-key -t vi-copy 'v' begin-selection
+    bind-key -t vi-copy 'y' copy-selection
+
+    bind-key \ confirm-before kill-session
+    bind-key M-[ copy-mode
+    bind-key M-] paste-buffer
+
+# This need xclip.
+# sudo apt-get install xclind-key -n M-[   ]p
+# move x clipboard into tmux paste buffer
+bind M-p run "xclip -o | tmux load-buffer - ; tmux paste-buffer" \; display "move x clipboard into tmux paste buffer"
+# move tmux copy buffer into x nd-key -n M-[   ]clipboard
+bind M-y run "tmux save-buffer - | xclip -selection c" \; display "move tmux copy buffer into x clipboard"
+
+bind-key -n M-\ confirm-before kill-session
+bind-key -n M-] paste-buffer
+
+bind-key -n M-Left prev
+bind-key -n M-Right next
+bind-key -n M-C-Left prev
+bind-key -n M-C-Right next
+bind-key -n M-p prev
+bind-key -n M-n next
+bind-key -n M-C-h prev
+bind-key -n M-C-l next
+bind-key M-a last-window
+
+bind-key -n M-0 select-window -t :0
+bind-key -n M-1 select-window -t :1
+bind-key -n M-2 select-window -t :2
+bind-key -n M-3 select-window -t :3
+bind-key -n M-4 select-window -t :4
+bind-key -n M-5 select-window -t :5
+bind-key -n M-6 select-window -t :6
+bind-key -n M-7 select-window -t :7
+bind-key -n M-8 select-window -t :8
+bind-key -n M-9 select-window -t :9
+
+bind-key -n M-s split-window -v
+bind-key -n M-v split-window -h
+bind-key -n M-q  confirm-before kill-pane
+
+bind-key -n M-h select-pane -L
+bind-key -n M-j select-pane -D
+bind-key -n M-k select-pane -U
+bind-key -n M-l select-pane -R
+
+bind-key -n M-C-j swap-pane -D
+bind-key -n M-C-k swap-pane -U
+
+bind-key -r M-h resize-pane -L 5
+bind-key -r M-j resize-pane -D 5
+bind-key -r M-k resize-pane -U 5
+bind-key -r M-l resize-pane -R 5
+
+bind-key -n M-Enter new-window
+bind-key -n M-c new-window
+bind-key K confirm-before kill-window
+
+set -g status-keys vi
+bind-key -t vi-edit Up history-up
+bind-key -t vi-edit Down history-down
+
+set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+# Toggle mouse on with ^B m
+bind-key -n M-m \
+  set -g mode-mouse on \;\
+    set -g mouse-resize-pane on \;\
+      set -g mouse-select-pane on \;\
+        set -g mouse-select-window on \;\
+          display 'Mouse: ON'
+
+# Toggle mouse off with ^B M
+bind-key -n M-C-m \
+  set -g mode-mouse off \;\
+    set -g mouse-resize-pane off \;\
+      set -g mouse-select-pane off \;\
+        set -g mouse-select-window off \;\
+          display 'Mouse: OFF'
+
+# set <ESC> timmout
+set -sg escape-time 100
+

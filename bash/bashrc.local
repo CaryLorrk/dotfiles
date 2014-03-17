@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+FILEPATH=$BASH_SOURCE
+DOTPATH=`dirname "$FILEPATH"`
+HISTCONTROL=ignoreboth:erasedups
+
+# Don't wait for job termination notification
+set -o notify
+
+# Use case-sensitive filename globbing
+shopt -u nocaseglob
+
+
+# When changing directory small typos can be ignored by bash
+# for example, cd /vr/lgo/apaache would find /var/log/apache
+shopt -s cdspell
+
+# Ignore some controlling instructions
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+
+# 256 color terminal
+TERM=screen-256color
+
+# Less Colors for Man Pages
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+
+if type "vim" > /dev/null; then
+    export EDITOR=vim
+fi
+
+## Aliases
+if [ -d $DOTPATH/aliases ]; then
+    for f in $DOTPATH/aliases/*; do
+        [ -f $f ] && . $f
+    done
+fi
+
+## Plugins
+if [ -d $DOTPATH/plugins ]; then
+    for f in $DOTPATH/plugins/*; do
+        [ -f $f ]  && . $f
+    done
+fi
+
+## Bash completion
+if [ -d $DOTPATH/completion ]; then
+    for f in $DOTPATH/completion/*; do
+        [ -f $f ]  && . $f
+    done
+fi
+
+## Cusomization
+if [ -f $DOTPATH/custom.bash ]; then
+    . $DOTPATH/custom.bash
+fi

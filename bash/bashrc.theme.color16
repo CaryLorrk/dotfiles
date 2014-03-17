@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+RESET="\[\017\]"
+NORMAL="\[\033[0m\]"
+RED="\[\033[31;1m\]"
+YELLOW="\[\033[01;33m\]"
+GREEN="\[\033[01;32m\]"
+PURPLE="\[\033[01;35m\]"
+BLUE="\[\033[01;34m\]"
+WHITE="\[\033[37;1m\]"
+SMILEY="${GREEN}\$${NORMAL}"
+FROWNY="${RED}\$${NORMAL}"
+SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+PS1="${debian_chroot:+($debian_chroot)}${RESET}${GREEN}\u${BLUE}@${GREEN}\h${BLUE}:${PURPLE}\w${NORMAL} \`${SELECT}\` "

@@ -1,0 +1,294 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  General                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" sets how many lines of history VIM has to remember
+set history=1000
+
+set nocp
+
+" store session option
+set ssop-=options     " do not store global and local values in a session
+set ssop-=folds       " do not store folds
+
+
+" set to auto read when a file is changed from the outside
+set autoread
+
+let mapleader      = ","
+let maplocalleader = ""
+
+" set mapped key sequence timeout
+set timeoutlen=5000
+set ttimeout
+set ttimeoutlen=100
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Files/Backups                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" make backup file
+set backup
+
+" where to put backup file (don't forget to make a backup directory)
+let s:backupdir = $HOME . "/.vim/backup/" . getcwd()
+if !isdirectory(s:backupdir)
+    call mkdir(s:backupdir, "p")
+endif
+let &backupdir  = s:backupdir . ",$HOME/.tmp/vim/backup,./.backup,.,/tmp"
+
+" directory is the directory for temp file
+let s:directory = $HOME."/.vim/tmp/" . getcwd()
+if !isdirectory(s:directory)
+    call mkdir(s:directory, "p")
+endif
+let &directory  = s:directory . ",$HOME/.tmp/vim/tmp,.,/var/tmp,/tmp"
+
+" Undo persistence
+set undofile
+let s:undodir   = $HOME . "/.vim/undofile"
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "p")
+endif
+let &undodir    = s:undodir
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               User Interface                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" set 7 lines to the curors - when moving vertical
+set so=5
+
+set wildmode=longest:full
+set wildmenu "turn on WiLd menu
+
+set ruler "always show current position
+
+set hid "change buffer - without saving
+
+set backspace=2
+set clipboard=unnamed,unnamedplus
+
+set ignorecase "ignore case when searching
+set smartcase
+
+set hlsearch "highlight search things
+set incsearch "makes search act like search in modern browsers
+
+set magic "set magic on, for regular expressions
+
+" do not redraw while running macros (much faster) (LazyRedraw)
+set lazyredraw
+
+set showmatch "show matching bracets when text indicator is over them
+set mat=2 "how many tenths of a second to blink
+
+" Enable basic mouse behavior such as resizing buffers.
+set mouse=a
+if exists('$TMUX') " Support resizing in tmux
+  set ttymouse=xterm2
+endif
+
+" no sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Colors and Fonts                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable "enable syntax hl
+set background=dark
+set cursorline
+hi CursorLine term=bold cterm=bold
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Text, Tab and Indent                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set smarttab
+
+set ai
+set si
+set wrap
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Visual Mode                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"  In visual mode when you press * or # to search for the current selection
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
+
+function! VisualSearch(direction) range
+	let l:saved_reg     = @"
+	execute "normal! vgvy"
+
+	let l:pattern       = escape(@", '\\/.*$^~[]')
+	let l:pattern       = substitute(l:pattern, "\n$", "", "")
+
+	if a:direction     == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'gv'
+		call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	endif
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Tabs and Buffers                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart way to move btw. windows
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+" Tab configuration
+nmap <F9>   :tabnew      <CR>
+nmap <F10>  :tabclose    <CR>
+nmap <F11>  :tabprevious <CR>
+nmap <F12>  :tabnext     <CR>
+nmap <C-W>c :tabnew      <CR>
+nmap <C-W>K :tabclose    <CR>
+nmap <C-P>  :tabprevious <CR>
+nmap <C-N>  :tabnext     <CR>
+nmap [t     :tabprevious <CR>
+nmap ]t     :tabnext     <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 Statusline                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This would be overrided by airline
+" Always hide the statusline
+set laststatus=2
+
+" Format the statusline
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+
+function! CurDir()
+	let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+	return curdir
+endfunction
+
+function! HasPaste()
+	if &paste
+		return 'PASTE MODE  '
+	else
+		return ''
+	endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Mark setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>ms :marks <CR>
+nmap <Leader>md :delm! <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Fold Setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" folding by syntax
+set foldmethod=syntax
+" Open all folding when open a file
+autocmd BufWinEnter * normal zR
+nnoremap <Space> za
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Cscope setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This tests to see if vim was configured with the '--enable-cscope' option
+" when it was compiled.  If it wasn't, time to recompile vim...
+if has("cscope")
+
+    " use both global and ctag for 'ctrl-]', ':ta', and 'vim -t'
+    set cscopetag
+    " set to 0 to find in ctags first
+    set csto=0
+
+    " use gtags instead of cscope
+    let use_gtags=1
+    if use_gtags == 1 && executable("gtags")
+        set cscopeprg=gtags-cscope
+        " autotags setting
+        let g:autotags_cscope_or_gtags = "gtags"
+        let g:autotags_cscope_exe      = "gtags"
+        let g:autotags_global_exe      = "global"
+        if filereadable("GTAGS")
+            cs add GTAGS
+        elseif $GTAGS != ""
+            cs add $GTAGS
+        endif
+    else
+        if filereadable("cscope.out")
+            cs add cscope.out
+        elseif $CSCOPEDB != ""
+            cs add $CSCOPEDB
+        endif
+    endif
+
+    " show msg when any other cscope db added
+    set cscopeverbose
+
+
+    """"""""""""" My cscope/vim key mappings
+    "
+    " The following maps all invoke one of the following cscope search types:
+    "
+    "   's'   symbol: find all references to the token under cursor
+    "   'g'   global: find global definition(s) of the token under cursor
+    "   'c'   calls:  find all calls to the function name under cursor
+    "   't'   text:   find all instances of the text under cursor
+    "   'e'   egrep:  egrep search for the word under cursor
+    "   'f'   file:   open the filename under cursor
+    "   'i'   includes: find files that include the filename under cursor
+    "   'd'   called: find functions that function under cursor calls
+    "
+
+    " open in place
+    nmap <LocalLeader>s  :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>g  :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>c  :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>t  :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>e  :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>f  :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <LocalLeader>i  :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <LocalLeader>d  :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+    " open in s split
+    nmap <LocalLeader>ss :scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>sg :scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>sc :scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>st :scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>se :scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>sf :scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <LocalLeader>si :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <LocalLeader>sd :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+    " open in v split
+    nmap <LocalLeader>vs :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>vg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>vc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>vt :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>ve :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <LocalLeader>vf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <LocalLeader>vi :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <LocalLeader>vd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Omnicpp setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest
+let OmniCpp_MayCompleteDot      = 1 " autocomplete with .
+let OmniCpp_MayCompleteArrow    = 1 " autocomplete with ->
+let OmniCpp_MayCompleteScope    = 1 " autocomplete with ::
+let OmniCpp_SelectFirstItem     = 2 " select first item (but don't insert)
+let OmniCpp_NamespaceSearch     = 2 " search namespaces in this and included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
