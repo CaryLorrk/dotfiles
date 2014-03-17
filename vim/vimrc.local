@@ -5,6 +5,7 @@
 set history=1000
 
 set nocp
+set encoding=utf-8
 
 " store session option
 set ssop-=options     " do not store global and local values in a session
@@ -18,7 +19,7 @@ let mapleader      = ","
 let maplocalleader = ""
 
 " set mapped key sequence timeout
-set timeoutlen=5000
+set notimeout
 set ttimeout
 set ttimeoutlen=100
 
@@ -27,6 +28,7 @@ set ttimeoutlen=100
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " make backup file
 set backup
+set backupcopy=yes
 
 " where to put backup file (don't forget to make a backup directory)
 let s:backupdir = $HOME . "/.vim/backup/" . getcwd()
@@ -150,14 +152,8 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
 " Tab configuration
-nmap <F9>   :tabnew      <CR>
-nmap <F10>  :tabclose    <CR>
-nmap <F11>  :tabprevious <CR>
-nmap <F12>  :tabnext     <CR>
 nmap <C-W>c :tabnew      <CR>
 nmap <C-W>K :tabclose    <CR>
-nmap <C-P>  :tabprevious <CR>
-nmap <C-N>  :tabnext     <CR>
 nmap [t     :tabprevious <CR>
 nmap ]t     :tabnext     <CR>
 

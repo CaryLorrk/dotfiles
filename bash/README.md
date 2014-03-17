@@ -7,9 +7,9 @@ bashrc.local
 ------------
 Some basic setting and source other files.
 
-bashrc.theme.*
+theme
 --------------
-Bash colorscheme. Choose one to source.
+Bash colorscheme. Choose to source.
 
 alias
 -----
