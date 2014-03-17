@@ -2,6 +2,9 @@
     name      = CaryLorrk
     email     = carylorrk@gmail.com
 
+[push]
+    default   = simple
+
 # Vim as difftool
 [diff]
 	tool      = vimdiff
@@ -27,11 +30,11 @@
 	untracked = red bold
 
 [alias]
-    l = log
-    st = status
-    ci = commit --verbose
-    co = checkout
-    aa = add --all
-    b = branch
-    amend = commit --amend
-    contains = branch --contains
+    l         = log
+    st        = status
+    ci        = commit --verbose
+    co        = checkout
+    aa        = add --all
+    b         = branch
+    amend     = commit --amend
+    contains  = branch --contains
