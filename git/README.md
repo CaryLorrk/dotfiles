@@ -4,8 +4,9 @@ Git setting
 gitconfig
 ---------
 Add following to .gitconfig
-[include]
-    path=/path/to/gitconfig
+
+    [include]
+        path=/path/to/gitconfig
 
 gitignore
 ---------
