@@ -209,6 +209,11 @@ Useful cammand/binding
 ####[Fugitive](https://github.com/tpope/vim-fugitive)
 * `:Git`     - git command
 * `:Gstatus` - add/reset file
+    * `-`  - add and reset file
+    * `cc` - Gcommit
+    * `ca` - Gcommit --amend
+    * `D`  - Gdiff
+    * `o`  - Gsplit
 * `:Gblame`  - show detail commit status for each line
 * `:Gcommit` - commit
 * `:Gdiff`   - diff
@@ -268,6 +273,7 @@ a[mame="indentguides"]
 * `,b` - add/remove breakpoints
 * `:PymodeLint` / `:PymodeLintAuto` - code check / autofix
 * `K` `:PymodeDoc` - show document by pydoc
+* `:PymodeRopeNewProject` -- Open new Rope project in current working directory
 * `<C-C>d` - show doc
 * `<C-C>g` - go to definition
 * `<C-C>f` - find
