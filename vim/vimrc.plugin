@@ -17,185 +17,210 @@ call vundle#rc()
 " Vim plugin management
 Bundle 'gmarik/vundle'
 
-" Autocomplete engine
-Bundle 'Valloric/YouCompleteMe'
-" YouCompleteMe needs some prerequisites.
-" sudo apt-get install build-essential cmake python-dev
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.sh --clang-completer
-" if jedi is not founded, run 'git submodule update --init --recursive' at YCM
+" Runtime files
+Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-git'
+Bundle 'Keithbsmiley/tmux.vim'
+Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
 
-" Autocomplete
-" Bundle 'Shougo/neocomplcache.vim'
+" Text objects
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-function'
+Bundle 'lucapette/vim-textobj-underscore'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'wellle/targets.vim'
+Bundle 'kana/vim-textobj-datetime'
+Bundle 'kana/vim-textobj-entire'
+Bundle 'coderifous/textobj-word-column.vim'
+
+" Easily search for, substitute, and abbreviate multiple variants of a word
+Bundle 'tpope/vim-abolish'
+
+" Ack for vim (grep for source code)
+" Need Ack (ubuntu: apt-get install ack-grep)
+Bundle 'mileszs/ack.vim'
+
+" Lean & mean status/tabline
+" Need patched font, see
+" https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
+Bundle 'bling/vim-airline'
+" Airline for tmux
+"Bundle 'edkolev/tmuxline.vim'
+" Airline for bash
+"Bundle 'edkolev/promptline.vim'
+"
+" Manipulating and moving between function arguments
+Bundle 'PeterRincker/vim-argumentative'
+
+" Ctags and cscope/global management
+Bundle 'carylorrk/vim-autotags-gtags'
+
+" Auto closing tool
+"Bundle 'Raimondi/delimitMate'
+Bundle 'jiangmiao/auto-pairs'
+
+" calendar vimscript
+Bundle 'mattn/calendar-vim'
+
+" color ansi sequences, hex code and color name
+Bundle 'chrisbra/Colorizer'
+"Bundle 'sjl/AnsiEsc.vim'
+
+" Color Scheme
+Bundle 'chriskempson/vim-tomorrow-theme'
+"Bundle 'chriskempson/base16-vim'
 
 " Fuzzy File Finder
 Bundle 'kien/ctrlp.vim'
 
+" Ex command history reverse-i-search
+Bundle 'goldfeld/ctrlr.vim'
+
+" Asynchronous build and test dispatcher
+Bundle 'tpope/vim-dispatch'
+
+" Generate Doxygen documentation for C/C++, Python
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+
+" A Vim alignment plugin
+Bundle 'junegunn/vim-easy-align'
+
+" Simpler way to move
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'haya14busa/vim-easyoperator-phrase'
+Bundle 'haya14busa/vim-easyoperator-line'
+
+" Converts all compiler errors into signs
+Bundle 'vim-scripts/errormarker.vim'
+
+" Write HTML in a CSS-like syntax
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'mattn/emmet-vim'
+
+" Wisely \"end\" endfunction/endif/more in vim script
+Bundle 'tpope/vim-endwise'
+
+" Helpers for UNIX
+Bundle 'tpope/vim-eunuch'
+
+" Enabling opening a file in a given line
+Bundle 'bogado/file-line'
+
+" Git for VIM
+Bundle 'tpope/vim-fugitive'
+" Shows a git diff in the gutter (sign column)
+Bundle 'airblade/vim-gitgutter'
+" Search Github and clone repos
+Bundle 'gmarik/github-search.vim'
+
+" Global search and replace
+Bundle 'skwp/greplace.vim'
+
+" Show undo tree
+Bundle 'sjl/gundo.vim'
+
+" Visually displaying indent levels in code
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" Instant Markdown previews from VIM
+" Need some prerequisites.
+" gem install pygments.rb
+" gem install redcarpet -v 2.3.0
+" npm config set registry http://registry.npmjs.org/
+" npm -g install instant-markdown-d
+" ndg-utils
+Bundle 'suan/vim-instant-markdown'
+
+" Perform diffs on blocks of code
+Bundle 'AndrewRadev/linediff.vim'
+
+" Local vimrc (.lvimrc)
+Bundle 'vim-scripts/localvimrc'
+
+" Extended % matching
+Bundle 'vim-scripts/matchit.zip'
+
+" Sublime Text-like multiple selection
+Bundle 'terryma/vim-multiple-cursors'
+
+" Filesystem explorer
+Bundle 'vim-scripts/The-NERD-tree'
+Bundle 'jistr/vim-nerdtree-tabs'
+
+" Fast comment
+Bundle 'scrooloose/nerdcommenter'
+
+" A Narrow Region Plugin likes Emacs Narrow Region
+Bundle 'chrisbra/NrrwRgn'
+
+" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+Bundle 'klen/python-mode'
+
+" Run commands quickly
+Bundle 'thinca/vim-quickrun'
+
+" Better rainbow parentheses
+Bundle 'kien/rainbow_parentheses.vim'
+
+" Repeat previous action
+Bundle 'tpope/vim-repeat'
+
+" Session management
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
+
+" Vim filetype detection by the shebang
+Bundle 'vitalk/vim-shebang'
+
+" Use CTRL-A/CTRL-X to increment dates, times, and more
+Bundle 'tpope/vim-speeddating'
+
+" Surround
+Bundle 'tpope/vim-surround'
+
+" A fancy start screen
+Bundle 'mhinz/vim-startify'
+
 " Syntax checking
 Bundle 'scrooloose/syntastic'
+
+" Taglist replacement
+Bundle 'vim-scripts/Tagbar'
+
+" Eclipse like task list
+Bundle 'vim-scripts/TaskList.vim'
+
+" Pairs of handy bracket mappings
+Bundle 'tpope/vim-unimpaired'
+
+" Maintains a history of previous yanks, changes and deletes
+Bundle 'vim-scripts/YankRing.vim'
+
+" Autocomplete engine
+" needs some prerequisites.
+" sudo apt-get install build-essential cmake python-dev
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.sh --clang-completer
+" if jedi is not founded, run 'git submodule update --init --recursive' at YCM
+Bundle 'Valloric/YouCompleteMe'
+
+" Autocomplete
+" Bundle 'Shougo/neocomplcache.vim'
 
 " Snippet managemet (Code template)
 Bundle 'SirVer/ultisnips'
 " Default snippets
 Bundle 'honza/vim-snippets'
 
-" Simpler way to move
-Bundle 'Lokaltog/vim-easymotion'
-
-" A Vim alignment plugin
-Bundle 'junegunn/vim-easy-align'
-
-" Show undo tree
-Bundle 'sjl/gundo.vim'
-
-" Filesystem explorer
-Bundle 'vim-scripts/The-NERD-tree'
-
-" Auto closing tool
-"Bundle 'Raimondi/delimitMate'
-Bundle 'jiangmiao/auto-pairs'
-
-" Sublime Text-like multiple selection
-Bundle 'terryma/vim-multiple-cursors'
-
-" Surround
-Bundle 'tpope/vim-surround'
-
-" Helpers for UNIX
-Bundle 'tpope/vim-eunuch'
-
-" Provides additional text objects
-Bundle 'wellle/targets.vim'
-
-" Converts all compiler errors into signs
-Bundle 'vim-scripts/errormarker.vim'
-
-" Taglist replacement
-Bundle 'vim-scripts/Tagbar'
-
-" Ctags and cscope/global management
-Bundle 'carylorrk/vim-autotags-gtags'
-
-" Comment and uncomment
-Bundle 'scrooloose/nerdcommenter'
-
-" Ack for vim (grep for source code)
-" Need Ack (ubuntu: apt-get install ack-grep)
-Bundle 'mileszs/ack.vim'
-
-" Maintains a history of previous yanks, changes and deletes
-Bundle 'vim-scripts/YankRing.vim'
-
-" Session management
-Bundle 'xolox/vim-session'
-Bundle 'xolox/vim-misc'
-
-" Git for VIM
-Bundle 'tpope/vim-fugitive'
-" Shows a git diff in the gutter (sign column)
-Bundle 'airblade/vim-gitgutter'
-" Git runtime files
-Bundle 'tpope/vim-git'
-
-" Asynchronous build and test dispatcher
-Bundle 'tpope/vim-dispatch'
-
-" Markdown Vim Mode
-Bundle 'plasticboy/vim-markdown'
-
-" Local vimrc (.lvimrc)
-Bundle 'vim-scripts/localvimrc'
-
-" .tmux.conf syntax highlighting
-Bundle 'Keithbsmiley/tmux.vim'
-
-" Generate Doxygen documentation for C/C++, Python
-Bundle 'vim-scripts/DoxygenToolkit.vim'
-
-" Eclipse like task list
-Bundle 'vim-scripts/TaskList.vim'
-
-" Lean & mean status/tabline
-" Need patched font, see
-" https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
-Bundle 'bling/vim-airline'
-
-" Airline for tmux
-"Bundle 'edkolev/tmuxline.vim'
-
-" Airline for bash
-"Bundle 'edkolev/promptline.vim'
-
-" A Narrow Region Plugin likes Emacs Narrow Region
-Bundle 'chrisbra/NrrwRgn'
-
-" Vim filetype detection by the shebang
-Bundle 'vitalk/vim-shebang'
-
-" Repeat previous action
-Bundle 'tpope/vim-repeat'
-
-" Use CTRL-A/CTRL-X to increment dates, times, and more
-Bundle 'tpope/vim-speeddating'
-
-" Execute URLs, footnotes, open emails, organize ideas
-Bundle 'vim-scripts/utl.vim'
-
-" calendar vimscript
-Bundle 'mattn/calendar-vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Undocumented                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Text outlining and task management
 "Bundle 'jceb/vim-orgmode'
-
-" Ansi escape sequences concealed, but highlighted as specified
-"Bundle 'sjl/AnsiEsc.vim'
-Bundle 'chrisbra/Colorizer'
-
-" Easily search for, substitute, and abbreviate multiple variants of a word
-Bundle 'tpope/vim-abolish'
-
-" Text objects based on indentation level
-Bundle 'michaeljsmith/vim-indent-object'
-
-" Create text objects
-Bundle 'kana/vim-textobj-user'
-
-" Color Scheme
-Bundle 'chriskempson/vim-tomorrow-theme'
-
-" A fancy start screen
-Bundle 'mhinz/vim-startify'
-
-" Search Github and clone repos
-Bundle 'gmarik/github-search.vim'
-
-" Enabling opening a file in a given line
-Bundle 'bogado/file-line'
-
-" Visually displaying indent levels in code
-Bundle 'nathanaelkane/vim-indent-guides'
-
-" Run commands quickly
-Bundle 'thinca/vim-quickrun'
-
-" Write HTML in a CSS-like syntax
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'mattn/emmet-vim'
-
-" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-Bundle 'klen/python-mode'
-
-" Manipulating and moving between function arguments
-Bundle 'PeterRincker/vim-argumentative'
-
-" HTML5 omnicomplete and syntax
-Bundle 'othree/html5.vim'
-
-" Vastly improved Javascript indentation and syntax
-Bundle 'pangloss/vim-javascript'
-
-" Better rainbow parentheses
-Bundle 'kien/rainbow_parentheses.vim'
+" Execute URLs, footnotes, open emails, organize ideas
+"Bundle 'vim-scripts/utl.vim'
 
 filetype plugin indent on     " required!
 
@@ -207,28 +232,44 @@ let g:UltiSnipsExpandTrigger="<LocalLeader><TAB>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              NERDTree setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Leader>e :NERDTreeToggle <CR>
+nmap <Leader>e :NERDTreeTabsToggle <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Tagbar setting                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Leader>l :TagbarToggle   <CR>
+nmap <Leader>l :TagbarToggle   <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Gundo setting                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Leader>u :GundoToggle    <CR>
+nmap <Leader>u :GundoToggle    <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Easymotion setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_leader_key  = '<Leader>'
-let g:EasyMotion_mapping_f   = 'f'
-let g:EasyMotion_mapping_F   = 'F'
+let g:EasyMotion_smartcase        = 1
+let g:EasyMotion_use_upper        = 1
+let g:EasyMotion_keys             = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+map  f <Plug>(easymotion-bd-fl)
+map  F <Plug>(easymotion-bd-f)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+omap <Leader>p  <Plug>(easyoperator-phrase-select)
+xmap <Leader>p  <Plug>(easyoperator-phrase-select)
+nmap d<Leader>p <Plug>(easyoperator-phrase-delete)
+nmap y<Leader>p <Plug>(easyoperator-phrase-yank)
+omap <Leader>l  <Plug>(easyoperator-line-select)
+xmap <Leader>l  <Plug>(easyoperator-line-select)
+nmap d<Leader>l <Plug>(easyoperator-line-delete)
+nmap y<Leader>l <Plug>(easyoperator-line-yank)
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               CtrlP setting                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map               = '<Leader>f'
 let g:ctrlp_cmd               = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
@@ -237,18 +278,17 @@ let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
 let g:ctrlp_switch_buffer     = 0
 let g:ctrlp_match_window      = 'order:ttb, max:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nmap <Leader><Leader>b  :CtrlPBuffer <CR>
-nmap <Leader><Leader>r  :CtrlPMRU    <CR>
-nmap <Leader><leader>tg :CtrlPTag    <CR>
-nmap <Leader><leader>tl :CtrlPBufTag <CR>
+nmap <Leader>F  :CtrlPBuffer <CR>
+nmap <leader>t  :CtrlPBufTag <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              YankRing setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:yankring_replace_n_pkey = '<Leader><Leader>p'
-let g:yankring_replace_n_nkey = '<Leader><Leader>n'
+Bundle 'vim-scripts/YankRing.vim'
+let g:yankring_replace_n_pkey = '<Leader>p'
+let g:yankring_replace_n_nkey = '<Leader>n'
 let g:yankring_history_dir    = $HOME."/.vim"
-nnoremap <silent> <Leader><Leader>y :YRShow <CR>
+nnoremap <silent> <Leader>yr :YRShow <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Autotags setting                              "
@@ -263,30 +303,28 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Session setting                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-fun! PathHash(val)
-    return substitute(system("sha1sum", a:val), " .*", "", "")
+fun! PathToFilename(val)
+    return substitute(a:val, "/", "%", "g")
 endfun
 
-let s:hashed_path = PathHash(getcwd())
-nmap <Leader><Leader>ss :execute "SaveSession" PathHash(getcwd())   <CR>
-nmap <Leader><Leader>so :execute "OpenSession" PathHash(getcwd())   <CR>
-nmap <Leader><Leader>sc :execute "CloseSession"                     <CR>
-nmap <Leader><Leader>sd :execute "DeleteSession" PathHash(getcwd()) <CR>
-nmap <Leader><Leader>sr :execute "RestartVim"                       <CR>
+nmap <Leader>ss :execute "SaveSession" PathToFilename(getcwd())   <CR>
+nmap <Leader>so :execute "OpenSession" PathToFilename(getcwd())   <CR>
+nmap <Leader>sc :execute "CloseSession"                           <CR>
+nmap <Leader>sd :execute "DeleteSession" PathToFilename(getcwd()) <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Dispatch setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Debug after make
-nmap <Leader>l :Copen <CR>
+nmap <Leader>q :Copen <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           YouCompleteMe setting                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader> yy :YcmDiags                                   <CR>
-nmap <Leader> yf :YcmForceCompileAndDiagnostics              <CR>
-nmap <Leader> yg :YcmCompleter YcmForceCompileAndDiagnostics <CR>
-nmap <Leader> yc :GoToDeclaration                            <CR>
+nmap <Leader>yy :YcmDiags                                   <CR>
+nmap <Leader>yf :YcmForceCompileAndDiagnostics              <CR>
+nmap <Leader>yd :YcmCompleter GoToDefinitionElseDeclaration <CR>
+nmap <Leader>yc :YcmCompleter GoToDeclaration               <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              TaskList setting                              "
@@ -300,9 +338,9 @@ let g:utl_cfg_hdl_mt_generic      = "silent !xdg-open %p"
 let g:utl_cfg_hdl_scm_http_system = "silent !xdg-open %u"
 let g:utl_cfg_hdl_mt_text_html    = 'VIM'
 let g:utl_cfg_hdl_scm_http        = g:utl_cfg_hdl_scm_http_system
-nmap <Leader>uu  :Utl                                                      <CR>
-nmap <Leader>uhs :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http_system <CR>
-nmap <Leader>uhw :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http__wget  <CR>
+nmap <Leader><Leader>uu  :Utl                                                      <CR>
+nmap <Leader><Leader>uhs :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http_system <CR>
+nmap <Leader><Leader>uhw :let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http__wget  <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Calendar setting                              "
@@ -330,7 +368,7 @@ let g:promptline_theme                   = 'airline_insert'
 "                             EasyAlign setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap <Enter>   <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
+map <Leader>a :EasyAlign
  let g:easy_align_delimiters = {
 \ '>': { 'pattern': '>>\|=>\|>' },
 \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
@@ -355,7 +393,7 @@ nmap <Leader>a <Plug>(EasyAlign)
 \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Tomorrow setting                              "
+"                            Colorscheme setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme Tomorrow-Night
 set background=dark
@@ -370,7 +408,7 @@ let g:user_emmet_expandabbr_key = '<C-E>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Rainbow setting                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd Vimenter * RainbowParenthesesToggle
+nmap <Leader><Leader>r :RainbowParenthesesToggle <CR>
 autocmd Syntax * RainbowParenthesesLoadRound
 autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
@@ -397,3 +435,39 @@ let g:rbpt_colorpairs = [
     \ ['darkgreen',    '#00FF00'],
     \ ['White',         '#c0c0c0'],
     \ ]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Colorizer setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader><Leader>c :ColorToggle <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Syntastic setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_error_symbol   = '✗'
+let g:syntastic_warning_symbol = '⚠'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Greplace setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set grepprg=ack-grep
+let g:grep_cmd_opts = '--noheading'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 Auto Pair                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoPairs                 = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+let g:AutoPairsShortcutToggle   = "<C-P>a"
+let g:AutoPairsShortcutFastWrap = "<C-P>e"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Indent Guides                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_default_mapping = 0
+nmap <silent> <Leader><Leader>i <Plug>IndentGuidesToggle
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               NERDCommenter                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>caa <plug>NERDCommenterAltDelims
+

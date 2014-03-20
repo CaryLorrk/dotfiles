@@ -118,7 +118,6 @@ set wrap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Visual Mode                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
@@ -154,8 +153,12 @@ nmap <C-l> <C-W>l
 " Tab configuration
 nmap <C-W>c :tabnew      <CR>
 nmap <C-W>K :tabclose    <CR>
-nmap [t     :tabprevious <CR>
-nmap ]t     :tabnext     <CR>
+nmap <C-W>p :tabp        <CR>
+nmap <C-W>n :tabn        <CR>
+nmap [g     :tabprevious <CR>
+nmap ]g     :tabnext     <CR>
+nmap [G     :tabfirst    <CR>
+nmap ]G     :tablast     <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Statusline                                 "
