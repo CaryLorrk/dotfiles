@@ -37,7 +37,7 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 . $DOTPATH/theme/statusline.airline
-eval $(dircolors -b $DOTPATH/theme/dircolors.256dark)
+#eval $(dircolors -b $DOTPATH/theme/dircolors.solarized.256dark)
 
 
 if type "vim" > /dev/null; then

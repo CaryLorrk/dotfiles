@@ -1,27 +1,29 @@
 set -g history-limit 32768
 set -g prefix M-a
-unbind C-b
+unbind C-butoPairsShortcutJump     = "<C-P>n"
 bind M-a send-prefix
 bind-key a send-prefix
 
 bind-key -n M-r \
-  source-file ~/.tmux.conf \; \
+    source-file ~/.tmux.conf \; \
     display 'source-file ~/.tmux.conf'
 
-    set-window-option -g mode-keys vi
-    bind-key -t vi-copy 'v' begin-selection
-    bind-key -t vi-copy 'y' copy-selection
+set-window-option -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
 
-    bind-key \ confirm-before kill-session
-    bind-key M-[ copy-mode
-    bind-key M-] paste-buffer
+bind-key \ confirm-before kill-session
+bind-key M-[ copy-mode
+bind-key M-] paste-buffer
 
 # This need xclip.
 # sudo apt-get install xclind-key -n M-[   ]p
 # move x clipboard into tmux paste buffer
 bind M-p run "xclip -o | tmux load-buffer - ; tmux paste-buffer" \; display "move x clipboard into tmux paste buffer"
+bind p run "xclip -o | tmux load-buffer - ; tmux paste-buffer" \; display "move x clipboard into tmux paste buffer"
 # move tmux copy buffer into x nd-key -n M-[   ]clipboard
 bind M-y run "tmux save-buffer - | xclip -selection c" \; display "move tmux copy buffer into x clipboard"
+bind y run "tmux save-buffer - | xclip -selection c" \; display "move tmux copy buffer into x clipboard"
 
 bind-key -n M-\ confirm-before kill-session
 bind-key -n M-] paste-buffer
@@ -76,21 +78,22 @@ set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
+
 # Toggle mouse on with ^B m
 bind-key -n M-m \
-  set -g mode-mouse on \;\
+    set -g mode-mouse on \;\
     set -g mouse-resize-pane on \;\
-      set -g mouse-select-pane on \;\
-        set -g mouse-select-window on \;\
-          display 'Mouse: ON'
+    set -g mouse-select-pane on \;\
+    set -g mouse-select-window on \;\
+    display 'Mouse: ON'
 
 # Toggle mouse off with ^B M
 bind-key -n M-C-m \
-  set -g mode-mouse off \;\
+    set -g mode-mouse off \;\
     set -g mouse-resize-pane off \;\
-      set -g mouse-select-pane off \;\
-        set -g mouse-select-window off \;\
-          display 'Mouse: OFF'
+    set -g mouse-select-pane off \;\
+    set -g mouse-select-window off \;\
+    display 'Mouse: OFF'
 
 # set <ESC> timmout
 set -sg escape-time 100
