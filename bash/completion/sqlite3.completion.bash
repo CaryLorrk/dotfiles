@@ -1,0 +1,31 @@
+# sqlite3(1) completion -*- shell-script -*-
+
+_sqlite3()
+{
+    local cur prev words cword
+    _get_comp_words_by_ref cur prev words cword
+    _expand || return 0
+
+
+    local dbexts='@(sqlite?(3)|?(s?(3))db)'
+
+    case $prev in
+        -help|-version|-separator|-nullvalue|*.$dbexts)
+            return 0
+            ;;
+        -init)
+            _filedir
+            return 0
+            ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '$( _parse_help "$1" -help )' -- "$cur" ) )
+        return 0
+    fi
+
+    _filedir $dbexts
+} &&
+complete -F _sqlite3 sqlite3
+
+# ex: ts=4 sw=4 et filetype=sh
