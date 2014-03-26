@@ -76,6 +76,7 @@ Useful cammand/binding
 * [Eunuch](#eunuch)              - UNIX file operation
 * [File line](#fileline)         - enabling opening a file in a given line
 * [Fugitive](#fugitive)          - git for VIM
+* [Gitgutter](#gitgutter)        - shows a git diff in the gutter
 * [Github Search](#githubsearch) - search Github and clone repos
 * [NERDTree](#nerdtree)          - filesystem explorer
 
@@ -224,6 +225,10 @@ Useful cammand/binding
 * `:Gbrowse` - open file in github
 * `:Glog`    - load previous revisions of current file into quickfix
 * `:Glog --` - load ancestral commit objects into quickfix list
+
+<a href="" name="gitgutter"></a>
+####[Gitgutter](https://github.com/airblade/vim-gitgutter)
+* `]c` / `[c` - next / previous diff hunk
 
 <a href="" name="githubsearch"></a>
 ####[Github Search](https://github.com/gmarik/github-search.vim)

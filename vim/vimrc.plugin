@@ -23,6 +23,7 @@ Bundle 'tpope/vim-git'
 Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'vim-scripts/django.vim'
 
 " Text objects
 Bundle 'kana/vim-textobj-user'
@@ -212,6 +213,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 " Default snippets
 Bundle 'honza/vim-snippets'
+Bundle 'robhudson/snipmate_for_django'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Undocumented                                "
@@ -272,7 +274,7 @@ nmap y<Leader>l <Plug>(easyoperator-line-yank)
 let g:ctrlp_map               = '<Leader>f'
 let g:ctrlp_cmd               = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore     = '\v[\/]\.(git|hg|svn|pyc)$'
 let g:ctrlp_regexp            = 0
 let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
 let g:ctrlp_switch_buffer     = 0
@@ -295,6 +297,7 @@ nnoremap <silent> <Leader>yr :YRShow <CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:autotagsdir     = $HOME . "/.vim/autotags/byhash"
 let g:autotags_global = $HOME . "/.vim/autotags/global_tags"
+let g:autotags_no_global = 1
 
 if !isdirectory(g:autotagsdir)
     call mkdir(g:autotagsdir, "p")
@@ -311,6 +314,9 @@ nmap <Leader>ss :execute "SaveSession" PathToFilename(getcwd())   <CR>
 nmap <Leader>so :execute "OpenSession" PathToFilename(getcwd())   <CR>
 nmap <Leader>sc :execute "CloseSession"                           <CR>
 nmap <Leader>sd :execute "DeleteSession" PathToFilename(getcwd()) <CR>
+let g:session_default_overwrite = 1
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Dispatch setting                             "
@@ -325,6 +331,12 @@ nmap <Leader>yy :YcmDiags                                   <CR>
 nmap <Leader>yf :YcmForceCompileAndDiagnostics              <CR>
 nmap <Leader>yd :YcmCompleter GoToDefinitionElseDeclaration <CR>
 nmap <Leader>yc :YcmCompleter GoToDeclaration               <CR>
+let g:ycm_complete_in_comments                      = 1
+let g:ycm_collect_identifiers_from_tags_files       = 1
+let g:ycm_min_num_of_chars_for_completion           = 1
+let g:ycm_seed_identifiers_with_syntax              = 1
+let g:ycm_add_preview_to_completeopt                = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              TaskList setting                              "
@@ -471,3 +483,12 @@ nmap <silent> <Leader><Leader>i <Plug>IndentGuidesToggle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader>caa <plug>NERDCommenterAltDelims
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Python Mode Setting                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_rope = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Localvimrc Setting                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:localvimrc_sandbox = 0

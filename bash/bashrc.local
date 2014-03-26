@@ -39,6 +39,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 . $DOTPATH/theme/statusline.airline
 #eval $(dircolors -b $DOTPATH/theme/dircolors.solarized.256dark)
 
+export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 if type "vim" > /dev/null; then
     export EDITOR=vim
