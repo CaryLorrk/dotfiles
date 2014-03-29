@@ -24,6 +24,8 @@ Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'vim-scripts/django.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'othree/javascript-libraries-syntax.vim'
 
 " Text objects
 Bundle 'kana/vim-textobj-user'
@@ -161,9 +163,6 @@ Bundle 'klen/python-mode'
 " Run commands quickly
 Bundle 'thinca/vim-quickrun'
 
-" Better rainbow parentheses
-Bundle 'kien/rainbow_parentheses.vim'
-
 " Repeat previous action
 Bundle 'tpope/vim-repeat'
 
@@ -215,9 +214,10 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'robhudson/snipmate_for_django'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Undocumented                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""
+"  Undocumented  "
+""""""""""""""""""
 
 " Text outlining and task management
 "Bundle 'jceb/vim-orgmode'
@@ -252,6 +252,8 @@ nmap <Leader>u :GundoToggle    <CR>
 let g:EasyMotion_smartcase        = 1
 let g:EasyMotion_use_upper        = 1
 let g:EasyMotion_keys             = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
 map  f <Plug>(easymotion-bd-fl)
 map  F <Plug>(easymotion-bd-f)
 map  / <Plug>(easymotion-sn)
@@ -280,8 +282,9 @@ let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
 let g:ctrlp_switch_buffer     = 0
 let g:ctrlp_match_window      = 'order:ttb, max:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nmap <Leader>F  :CtrlPBuffer <CR>
-nmap <leader>t  :CtrlPBufTag <CR>
+nmap <Leader>b  :CtrlPBuffer    <CR>
+nmap <leader>t  :CtrlPBufTag    <CR>
+nmap <Leader>T  :CtrlPBufTagAll <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              YankRing setting                              "
@@ -335,8 +338,6 @@ let g:ycm_complete_in_comments                      = 1
 let g:ycm_collect_identifiers_from_tags_files       = 1
 let g:ycm_min_num_of_chars_for_completion           = 1
 let g:ycm_seed_identifiers_with_syntax              = 1
-let g:ycm_add_preview_to_completeopt                = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              TaskList setting                              "
@@ -418,37 +419,6 @@ hi CursorLine term=bold cterm=bold
 let g:user_emmet_expandabbr_key = '<C-E>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Rainbow setting                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Leader>r :RainbowParenthesesToggle <CR>
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_colorpairs = [
-    \ ['blue',       '#FF6000'],
-    \ ['cyan', '#00FFFF'],
-    \ ['darkmagenta',    '#CC00FF'],
-    \ ['yellow',   '#FFFF00'],
-    \ ['red',     '#FF0000'],
-    \ ['darkgreen',    '#00FF00'],
-    \ ['White',         '#c0c0c0'],
-    \ ['blue',       '#FF6000'],
-    \ ['cyan', '#00FFFF'],
-    \ ['darkmagenta',    '#CC00FF'],
-    \ ['yellow',   '#FFFF00'],
-    \ ['red',     '#FF0000'],
-    \ ['darkgreen',    '#00FF00'],
-    \ ['White',         '#c0c0c0'],
-    \ ['blue',       '#FF6000'],
-    \ ['cyan', '#00FFFF'],
-    \ ['darkmagenta',    '#CC00FF'],
-    \ ['yellow',   '#FFFF00'],
-    \ ['red',     '#FF0000'],
-    \ ['darkgreen',    '#00FF00'],
-    \ ['White',         '#c0c0c0'],
-    \ ]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Colorizer setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader><Leader>c :ColorToggle <CR>
@@ -486,9 +456,23 @@ nmap <Leader>caa <plug>NERDCommenterAltDelims
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Python Mode Setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_rope = 0
+let g:pymode_rope = 0 "use jedi instead
+let g:pymode_breakpoint_bind = '<leader>B'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Localvimrc Setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:localvimrc_sandbox = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Markdown Setting                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Django Setting                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd FILETYPE html set filetype=htmldjango.html
+"autocmd FILETYPE python set filetype=python.django
+
+

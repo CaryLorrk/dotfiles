@@ -90,7 +90,6 @@ Useful cammand/binding
 * Colorize
     * [Colorizer](#colorizer)         - color ansi sequences, hex code and color name
     * [Indent Gudies](#indentguides)  - visually displaying indent levels
-    * [Rainbow Parentheses](rainbow)  - colorize parentheses
 * [CtrlP](#ctrlp)                     - fuzzy search tag
 * [EasyMotion](#easymotion)           - used to replace the default search
 * [Gundo](#gundo)                     - undo tree
@@ -149,7 +148,7 @@ Useful cammand/binding
 
 <a href="" name="ctrlp"></a>
 ####[CtrlP](https://github.com/kien/ctrlp.vim)
-* `,f` / `,F` / `,t` - full path fuzzy file / buffer / buffer tag finder
+* `,f` / `,b` / `,t` / `,T` - full path fuzzy file / buffer / buffer tag / all buffer tag finder
 * `<C-R>` / `<C-D>`  - toggle regex / filename
 
 <a href="" name="dispatch"></a>
@@ -275,7 +274,7 @@ a[mame="indentguides"]
 
 <a href="" name="pythonmode"></a>
 ####[Python Mode](https://github.com/klen/python-mode)
-* `,b` - add/remove breakpoints
+* `,B` - add/remove breakpoints
 * `:PymodeLint` / `:PymodeLintAuto` - code check / autofix
 * `K` `:PymodeDoc` - show document by pydoc
 * `:PymodeRopeNewProject` -- Open new Rope project in current working directory
@@ -291,10 +290,6 @@ a[mame="indentguides"]
 ####[Quickrun](https://github.com/thinca/vim-quickrun)
 * `,r` `:Q` - execute current buffer
 * :[range]QuickRun [{type}] [<{input}] [>[>][{output}]] [-option value]...
-
-<a href="" name="rainbow"></a>
-####[Rainbow Parentheses](https://github.com/kien/rainbow_parentheses.vim)
-* `,,r` - colorize parentheses
 
 <a href="" name="session"></a>
 ####[Session](https://github.com/xolox/vim-session)
@@ -354,6 +349,9 @@ a[mame="indentguides"]
 * [Tmux](https://github.com/Keithbsmiley/tmux.vim)
 * [HTML5](https://github.com/othree/html5.vim)
 * [Javascript](https://github.com/pangloss/vim-javascript)
+* [django](https://github.com/vim-scripts/django.vim)
+* [css3](https://github.com/hail2u/vim-css3-syntax)
+* [Javascript Library](https://github.com/othree/javascript-libraries-syntax.vim)
 
 <a href="" name="object"></a>
 ####Text Object
