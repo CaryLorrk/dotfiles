@@ -316,6 +316,7 @@ a[mame="indentguides"]
 <a href="" name="ultisnips"></a>
 ####[Ultisnips](https://github.com/SirVer/ultisnips)
 * `{snippet}<TAB>`   - expand snippet
+* `l`                - list snippet
 
 <a href="" name="unimpaired"></a>
 ####[Unimpaired](https://github.com/tpope/vim-unimpaired)

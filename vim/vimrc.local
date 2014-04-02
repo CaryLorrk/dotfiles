@@ -67,6 +67,7 @@ set ruler "always show current position
 set hid "change buffer - without saving
 
 set number
+set relativenumber
 
 set backspace=2
 set clipboard=unnamed,unnamedplus
@@ -115,6 +116,7 @@ set smarttab
 
 set ai
 set si
+
 set wrap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

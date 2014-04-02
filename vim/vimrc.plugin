@@ -210,9 +210,8 @@ Bundle 'Valloric/YouCompleteMe'
 
 " Snippet managemet (Code template)
 Bundle 'SirVer/ultisnips'
-" Default snippets
 Bundle 'honza/vim-snippets'
-Bundle 'robhudson/snipmate_for_django'
+Bundle 'CaryLorrk/vim-snippets-carylorrk'
 
 
 """"""""""""""""""
@@ -230,6 +229,7 @@ filetype plugin indent on     " required!
 "                             Ultisnips setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<LocalLeader><TAB>"
+let g:UltiSnipsListSnippets="<localLeader>l"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              NERDTree setting                              "
