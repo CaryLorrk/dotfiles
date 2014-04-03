@@ -439,8 +439,8 @@ let g:grep_cmd_opts = '--noheading'
 "                                 Auto Pair                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:AutoPairs                 = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
-let g:AutoPairsShortcutToggle   = "<C-L>a"
-let g:AutoPairsShortcutFastWrap = "<C-L>e"
+let g:AutoPairsShortcutToggle   = "<C-P>"
+let g:AutoPairsShortcutFastWrap = "<C-L>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Indent Guides                                "
