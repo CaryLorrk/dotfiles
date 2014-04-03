@@ -135,8 +135,8 @@ Useful cammand/binding
 
 <a href="" name="autopair"></a>
 ####[Auto Pairs](https://github.com/jiangmiao/auto-pairs)
-* `<C-P>a` - toggle auto pairs
-* `<C-P>e` - fast wrap the word
+* `<C-L>a` - toggle auto pairs
+* `<C-L>e` - fast wrap the word
 
 <a href="" name="calendar"></a>
 ####[Calendar](https://github.com/mattn/calendar-vim)
