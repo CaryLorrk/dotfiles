@@ -27,7 +27,7 @@ alias lld='lla -F | \grep /$'
 alias llf='lla -F | \grep [^/]$'
 
 # This is GOLD for finding out what is taking so much space on your drives!
-alias diskspace="du -S | sort -n -r |more"
+alias diskspace="du -S -B M | sort -n -r |more"
 
 # Show me the size (sorted) of only the folders in this directory
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
