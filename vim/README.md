@@ -23,20 +23,34 @@ Need download Vundle firstl.
 
 * Instant Markdown
 
-    Instant Markdown previews from VIM
-    Need some prerequisites.
-    gem install pygments.rb
-    gem install redcarpet -v 2.3.0
-    npm config set registry http://registry.npmjs.org/
-    npm -g install instant-markdown-d
-    ndg-utils
+    Instant Markdown previews from VIM  
+    Need some prerequisites.  
+    gem install pygments.rb  
+    gem install redcarpet -v 2.3.0  
+    npm config set registry http://registry.npmjs.org/  
+    npm -g install instant-markdown-d  
+    xdg-utils
+
+* Latex-Box
+
+    apt-get install latexmk
+
 
 * YouCompleteMe
 
-    apt-get install build-essential cmake python-dev
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer
+    apt-get install build-essential cmake python-dev  
+    cd ~/.vim/bundle/YouCompleteMe  
+    ./install.sh --clang-completer  
     if jedi is not founded, run 'git submodule update --init --recursive' at YCM
+
+
+* Syntastic
+  
+    for javascript  
+    npm install -g jslint
+      
+    for php  
+    apt-get install php5-cli php-codesniffer
 
 Useful cammand/binding
 -----------
@@ -103,6 +117,7 @@ Useful cammand/binding
 * [DoxygenToolkit](#doxygentoolkit)                               - generate Doxygen documentation for C/C++, Python
 * [EasyAlign](#easyalign)                                         - easy align
 * [Emmet](#emmet) - write HTML in a CSS                           - like syntax
+* [Latex-Box](#latexbox)                                          - Lightweight Toolbox for LaTeX
 * [Linediff](#linediff)                                           - perform diffs on blocks of code
 * [NrrwRgn](#nrrwrgn)                                             - focussing on a region and making the rest inaccessible
 * [Python Mode](#pythonmode)                                      - all you need to create python application
@@ -242,9 +257,15 @@ Useful cammand/binding
 ####[Gundo](https://github.com/sjl/gundo.vim)
 * `,u` - undo tree
 
-a[mame="indentguides"]
+<a href="" name="indentguides"></a>
 ####[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides)
 * `,,i` - toggle indent visualization
+
+<a href="" name="latexbox"></a>
+####[Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box.git)
+* `^_ll` or `:Latexmk`   - compile with  latexmk
+* `^_lv` or `:LatexView` - open output file
+* `^_le`                 - load log file and jump to first error
 
 <a href="" name="linediff"></a>
 ####[Linediff](https://github.com/AndrewRadev/linediff.vim)
@@ -315,8 +336,8 @@ a[mame="indentguides"]
 
 <a href="" name="ultisnips"></a>
 ####[Ultisnips](https://github.com/SirVer/ultisnips)
-* `{snippet}<TAB>`   - expand snippet
-* `l`                - list snippet
+* `{snippet}^_<TAB>`   - expand snippet
+* `^_l`                - list snippet
 
 <a href="" name="unimpaired"></a>
 ####[Unimpaired](https://github.com/tpope/vim-unimpaired)

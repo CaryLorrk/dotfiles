@@ -135,6 +135,9 @@ Bundle 'nathanaelkane/vim-indent-guides'
 " ndg-utils
 Bundle 'suan/vim-instant-markdown'
 
+" Lightweight Toolbox for LaTeX
+Bundle 'LaTeX-Box-Team/LaTeX-Box.git'
+
 " Perform diffs on blocks of code
 Bundle 'AndrewRadev/linediff.vim'
 
@@ -156,6 +159,9 @@ Bundle 'scrooloose/nerdcommenter'
 
 " A Narrow Region Plugin likes Emacs Narrow Region
 Bundle 'chrisbra/NrrwRgn'
+
+" Improved PHP omnicompletion
+Bundle 'shawncplus/phpcomplete.vim'
 
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 Bundle 'klen/python-mode'
@@ -211,6 +217,7 @@ Bundle 'Valloric/YouCompleteMe'
 " Snippet managemet (Code template)
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
+Bundle 'matthewsimo/angular-vim-snippets'
 Bundle 'CaryLorrk/vim-snippets-carylorrk'
 
 
@@ -289,7 +296,6 @@ nmap <Leader>T  :CtrlPBufTagAll <CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              YankRing setting                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'vim-scripts/YankRing.vim'
 let g:yankring_replace_n_pkey = '<Leader>p'
 let g:yankring_replace_n_nkey = '<Leader>n'
 let g:yankring_history_dir    = $HOME."/.vim"
@@ -438,9 +444,12 @@ let g:grep_cmd_opts = '--noheading'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Auto Pair                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairs                 = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
-let g:AutoPairsShortcutToggle   = "<C-P>"
-let g:AutoPairsShortcutFastWrap = "<C-L>"
+let g:AutoPairs                   = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+let g:AutoPairsShortcutToggle     = "<C-P>a"
+let g:AutoPairsShortcutJump       = '<C-P>n'
+let g:AutoPairsFlyMode            = 1
+let g:AutoPairsShortcutBackInsert = '<C-P>b'
+let g:AutoPairsShortcutFastWrap   = "<C-L>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Indent Guides                                "
@@ -475,4 +484,8 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 "autocmd FILETYPE html set filetype=htmldjango.html
 "autocmd FILETYPE python set filetype=python.django
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Latex Setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
 
