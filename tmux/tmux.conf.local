@@ -1,6 +1,6 @@
 set -g history-limit 32768
 set -g prefix M-a
-unbind C-butoPairsShortcutJump     = "<C-P>n"
+unbind C-b
 bind M-a send-prefix
 bind-key a send-prefix
 
