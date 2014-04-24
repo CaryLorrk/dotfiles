@@ -17,7 +17,7 @@ LDFLAGS=
 LIBS= -lboost_unit_test_framework
 
 ifeq ($(COV),yes)
-	CXXFLAGS+=-fprofile-arcs -ftest-coverage
+	CXXFLAGS+=-g -O0 --coverage
 	LDFLAGS+=-fprofile-arcs
 	ODIR=$(CDIR)
 	BDIR=$(CDIR)
