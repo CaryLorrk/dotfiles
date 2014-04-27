@@ -21,15 +21,21 @@ Need download Vundle firstl.
 
     Need patched font, see [powerline](https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation)
 
+* Eclim
+
+    Need install Eclim
+
 * Instant Markdown
 
     Instant Markdown previews from VIM  
     Need some prerequisites.  
+    apt-get install ruby-dev
     gem install pygments.rb  
     gem install redcarpet -v 2.3.0  
+    apt-get install npm
     npm config set registry http://registry.npmjs.org/  
     npm -g install instant-markdown-d  
-    xdg-utils
+    apt-get install xdg-utils
 
 * Latex-Box
 
@@ -113,19 +119,20 @@ Useful cammand/binding
 * [TaskList](#tasklist)               - vew task list
 
 ###Programming/Writing
-* [Auto Pairs](#autopair)                                         - insert or delete brackets, parens, quotes in pair
-* [DoxygenToolkit](#doxygentoolkit)                               - generate Doxygen documentation for C/C++, Python
-* [EasyAlign](#easyalign)                                         - easy align
-* [Emmet](#emmet) - write HTML in a CSS                           - like syntax
-* [Latex-Box](#latexbox)                                          - Lightweight Toolbox for LaTeX
-* [Linediff](#linediff)                                           - perform diffs on blocks of code
-* [NrrwRgn](#nrrwrgn)                                             - focussing on a region and making the rest inaccessible
-* [Python Mode](#pythonmode)                                      - all you need to create python application
-* [Speeddating](#speeddating) - use CTRL-A/CTRL                   - X to increment dates, times, and more
-* [Ultisnips](#ultisnips)                                         - snippes (code template)
-* [YouCompleteMe](#ycm) - autocomplete and sematic checking for C - family and python
-* [Runtime](#runtime)                                             - runtime files
-* [Text Object](#object)                                          - text object extensions
+* [Auto Pairs](#autopair)            - insert or delete brackets, parens, quotes in pair
+* [DoxygenToolkit](#doxygentoolkit)  - generate Doxygen documentation for C/C++, Python
+* [EasyAlign](#easyalign)            - easy align
+* [Eclim](#eclim)                    - Use eclipse function
+* [Emmet](#emmet)                    - write HTML in a CSS-like syntax
+* [Latex-Box](#latexbox)             - Lightweight Toolbox for LaTeX
+* [Linediff](#linediff)              - perform diffs on blocks of code
+* [NrrwRgn](#nrrwrgn)                - focussing on a region and making the rest inaccessible
+* [Python Mode](#pythonmode)         - all you need to create python application
+* [Speeddating](#speeddating)        - use CTRL-A/CTR-X to increment dates, times, and more
+* [Ultisnips](#ultisnips)            - snippes (code template)
+* [YouCompleteMe](#ycm)              - autocomplete and sematic checking for C-family and python
+* [Runtime](#runtime)                - runtime files
+* [Text Object](#object)             - text object extensions
 
 ###Plugins
 
@@ -189,6 +196,12 @@ Useful cammand/binding
 * `f` / `F`                              - search character in line / page
 * `/` + `<TAB>`  / `<S-TAB>` + `<Enter>` - search multiple character
 * `{operator},p` / `{operator},l`        - range operation
+
+<a href="" name="eclim"></a>
+####[Eclim](http://eclim.org/)
+* ,i - import the class under the cursor
+* ,k - search for the javadocs of the element under the cursor
+* enter - perform a context sensitive search of the element under the cursor
 
 <a href="" name="emmet"></a>
 ####[Emmet](https://github.com/mattn/emmet-vim)

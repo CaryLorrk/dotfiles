@@ -489,3 +489,10 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor='latex'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Eclim Setting                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent><buffer><leader>i :JavaImport<cr>
+nnoremap <silent><buffer><leader>k :JavaDocSearch -x declarations<cr>
+nnoremap <silent><buffer><cr> :JavaSearchContext<cr>
+let g:EclimCompletionMethod = 'omnifunc'
