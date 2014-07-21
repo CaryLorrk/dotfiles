@@ -12,7 +12,6 @@ DEP=$(addprefix $(DDIR)/, $(notdir $(OBJ:.o=.dep)))
 BIN=$(addprefix $(BDIR)/, $(MAIN))
 RUN=$(addprefix run-, $(MAIN))
 
-CXXFLAGS=-Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -O2 -std=c++11
 LDFLAGS=
 LIBS= -lboost_unit_test_framework
 

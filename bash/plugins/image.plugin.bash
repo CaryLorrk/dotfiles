@@ -8,6 +8,26 @@ resize_image()
     echo_and_run "convert \"$1\" -resize $2 \"resized_$1\""
 }
 
+png_to_jpg()
+{
+    if [ -z "$1" ]; then
+        echo "usage: png_to_jpg file_name"
+        return
+    fi
+    
+    file=$1
+    extension="${file##*.}"
+    filename="${file%.*}"
+
+    if [ $extension != "png" ]; then
+        echo "Not a png file."
+        return
+    fi
+
+    echo_and_run "convert ${filename}.png -background white -flatten ${filename}.jpg"
+}
+export -f png_to_jpg
+
 rename_image_to_date()
 {
     if [ -z "$1" ]; then

@@ -113,7 +113,7 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set smarttab
-
+autocmd FileType html,javascript set tabstop=2|set shiftwidth=2
 set ai
 set si
 
@@ -197,7 +197,8 @@ nmap <Leader>md :delm! <CR>
 "                                Fold Setting                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " folding by syntax
-set foldmethod=syntax
+"set foldmethod=syntax
+set foldmethod=indent
 " Open all folding when open a file
 autocmd BufWinEnter * normal zR
 nnoremap <Space> za
@@ -212,7 +213,7 @@ if has("cscope")
     " use both global and ctag for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
     " set to 0 to find in ctags first
-    set csto=0
+    set csto=1
 
     " use gtags instead of cscope
     let use_gtags=1

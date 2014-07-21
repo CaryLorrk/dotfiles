@@ -17,13 +17,11 @@ bind-key M-[ copy-mode
 bind-key M-] paste-buffer
 
 # This need xclip.
-# sudo apt-get install xclind-key -n M-[   ]p
+# sudo apt-get install xclip
 # move x clipboard into tmux paste buffer
-bind M-p run "xclip -o | tmux load-buffer - ; tmux paste-buffer" \; display "move x clipboard into tmux paste buffer"
 bind p run "xclip -o | tmux load-buffer - ; tmux paste-buffer" \; display "move x clipboard into tmux paste buffer"
-# move tmux copy buffer into x nd-key -n M-[   ]clipboard
-bind M-y run "tmux save-buffer - | xclip -selection c" \; display "move tmux copy buffer into x clipboard"
-bind y run "tmux save-buffer - | xclip -selection c" \; display "move tmux copy buffer into x clipboard"
+# move tmux copy buffer into x clip
+bind y run "tmux save-buffer - | xclip -i -selection c > /dev/null" \; display "move tmux copy buffer into x clipboard"
 
 bind-key -n M-\ confirm-before kill-session
 bind-key -n M-] paste-buffer
