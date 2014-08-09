@@ -21,6 +21,7 @@ Software
 * iftop - network bandwidth monitor
 * iotop - I/O monitor
 * mytop/pgtop - mysql/postgresql monitor
+* Midori - lightweight browser
 
 
 Command
