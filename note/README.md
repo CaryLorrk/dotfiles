@@ -22,6 +22,7 @@ Software
 * iotop - I/O monitor
 * mytop/pgtop - mysql/postgresql monitor
 * Midori - lightweight browser
+* kchmviewer - microsoft chm viewer
 
 
 Command

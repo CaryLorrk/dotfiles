@@ -133,6 +133,7 @@ Useful cammand/binding
 * [YouCompleteMe](#ycm)              - autocomplete and sematic checking for C-family and python
 * [Runtime](#runtime)                - runtime files
 * [Text Object](#object)             - text object extensions
+* [YankRing](#yarkring)              - maintains a history of previous yanks, changes and deletes 
 
 ###Plugins
 
