@@ -41,6 +41,11 @@ Need download Vundle firstl.
 
     apt-get install latexmk
 
+* Localvimrc
+
+    vim localvimrc.vba 
+    :so % 
+    :q
 
 * YouCompleteMe
 
