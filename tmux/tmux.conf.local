@@ -51,6 +51,9 @@ bind-key -n M-s split-window -v
 bind-key -n M-v split-window -h
 bind-key -n M-q  confirm-before kill-pane
 
+bind-key -n M-< swap-window -t -1
+bind-key -n M-> swap-window -t +1
+
 bind-key -n M-h select-pane -L
 bind-key -n M-j select-pane -D
 bind-key -n M-k select-pane -U
