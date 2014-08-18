@@ -186,7 +186,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 
 " A fancy start screen
-Bundle 'mhinz/vim-startify'
+"Bundle 'mhinz/vim-startify'
 
 " Syntax checking
 Bundle 'scrooloose/syntastic'
