@@ -8,6 +8,35 @@ resize_image()
     echo_and_run "convert \"$1\" -resize $2 \"resized_$1\""
 }
 
+gif_to_mp4()
+{
+    if [ -z "$1" ]; then
+        echo "usage: gif_to_mp4 file_name"
+        return
+    fi
+
+    file=$1
+    extension="${file##*.}"
+    filename="${file%.*}"
+    if [ $extension != "gif" ]; then
+        echo "Not a gif file."
+        return
+    fi
+
+    echo "convert ${file} to ${filename}.mp4"
+    ffmpeg -loglevel error -i "${file}" -vf scale="trunc(iw/2)*2:trunc(ih/2)*2" \
+        -c:v libx264 -pix_fmt yuv420p "${filename}.tmp.mp4"
+
+    for ((i=0;i<3;++i)); do
+        echo "file '${filename}.tmp.mp4'" >> "${filename}.tmp.txt"
+    done
+
+    ffmpeg -loglevel error -f concat -i "${filename}.tmp.txt" -c copy "${filename}.mp4"
+    rm -rf "${filename}.tmp.mp4" "${filename}.tmp.txt"
+
+}
+export -f gif_to_mp4
+
 png_to_jpg()
 {
     if [ -z "$1" ]; then
@@ -24,7 +53,7 @@ png_to_jpg()
         return
     fi
 
-    echo_and_run "convert ${filename}.png -background white -flatten ${filename}.jpg"
+    echo_and_run "convert '${filename}.png' -background white -flatten '${filename}.jpg'"
 }
 export -f png_to_jpg
 
