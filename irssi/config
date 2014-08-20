@@ -1,0 +1,107 @@
+servers = (
+  {
+    address = "irc.ubuntu.com";
+    chatnet = "Ubuntu";
+    port = "6697";
+    use_ssl = "yes";
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  Ubuntu = { 
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "4";
+    max_whois = "1";
+  };
+  Freenode = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "4";
+    max_whois = "1";
+  };
+};
+
+channels = (
+  { name = "#g0v.tw"; chatnet = "freenode"; autojoin = "yes"; },
+  { 
+    name = "#codefortomorrow";
+    chatnet = "freenode";
+    autojoin = "yes";
+  },
+  { name = "#ubuntu-tw"; chatnet = "freenode"; autojoin = "yes"; }
+);
+
+aliases = {
+  J = "join";
+  WJOIN = "join -window";
+  WQUERY = "query -window";
+  LEAVE = "part";
+  BYE = "quit";
+  EXIT = "quit";
+  SIGNOFF = "quit";
+  DESCRIBE = "action";
+  DATE = "time";
+  HOST = "userhost";
+  LAST = "lastlog";
+  SAY = "msg *";
+  WI = "whois";
+  WII = "whois $0 $0";
+  WW = "whowas";
+  W = "who";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  CL = "clear";
+  K = "kick";
+  KB = "kickban";
+  KN = "knockout";
+  BANS = "ban";
+  B = "ban";
+  MUB = "unban *";
+  UB = "unban";
+  IG = "ignore";
+  UNIG = "unignore";
+  SB = "scrollback";
+  UMODE = "mode $N";
+  WC = "window close";
+  WN = "window new hide";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
+  GOTO = "sb goto";
+  CHAT = "dcc chat";
+  RUN = "SCRIPT LOAD";
+  CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
+  SBAR = "STATUSBAR";
+  INVITELIST = "mode $C +I";
+  Q = "QUERY";
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  EXEMPTLIST = "mode $C +e";
+  ATAG = "WINDOW SERVER";
+  UNSET = "set -clear";
+  RESET = "set -default";
+};
+
+settings = {
+  core = {
+    real_name = "carylorrk";
+    user_name = "carylorrk";
+    nick = "carylorrk";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    window_default_level = "ALL -JOINS -PARTS -QUITS";
+    window_check_level_first = "yes";
+  };
+};
+keyboard = ( 
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
+);
