@@ -23,11 +23,19 @@ gif_to_mp4()
         return
     fi
 
+
     echo "convert ${file} to ${filename}.mp4"
     ffmpeg -loglevel error -i "${file}" -vf scale="trunc(iw/2)*2:trunc(ih/2)*2" \
         -c:v libx264 -pix_fmt yuv420p "${filename}.tmp.mp4"
 
-    for ((i=0;i<3;++i)); do
+    duration=`ffprobe -show_format ${filename}.tmp.mp4 2> /dev/null | sed -n '/duration/s/.*=//p'`
+    if [[ ${duration} < 1 ]]; then
+        concat=`echo "1.0/${duration}" | bc -l | python -c "print int(round(float(raw_input())+0.5)*3)"`
+    else
+        concat=3
+    fi
+
+    for ((i=0;i<${concat};++i)); do
         echo "file '${filename}.tmp.mp4'" >> "${filename}.tmp.txt"
     done
 
