@@ -198,7 +198,8 @@ nmap <Leader>md :delm! <CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " folding by syntax
 "set foldmethod=syntax
-set foldmethod=indent
+"set foldmethod=indent
+set foldmethod=manual
 " Open all folding when open a file
 autocmd BufWinEnter * normal zR
 nnoremap <Space> za
