@@ -18,7 +18,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Runtime files
-"Bundle 'plasticboy/vim-markdown'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-git'
 Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'othree/html5.vim'
@@ -117,6 +117,9 @@ Bundle 'airblade/vim-gitgutter'
 " Search Github and clone repos
 Bundle 'gmarik/github-search.vim'
 
+" Go development plugin for Vim
+Bundle 'fatih/vim-go'
+
 " Global search and replace
 Bundle 'skwp/greplace.vim'
 
@@ -133,7 +136,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 " npm config set registry http://registry.npmjs.org/
 " npm -g install instant-markdown-d
 " ndg-utils
-Bundle 'suan/vim-instant-markdown'
+"Bundle 'suan/vim-instant-markdown'
 
 " Lightweight Toolbox for LaTeX
 Bundle 'LaTeX-Box-Team/LaTeX-Box.git'
