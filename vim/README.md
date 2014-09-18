@@ -25,6 +25,11 @@ Need download Vundle firstl.
 
     Need install Eclim
 
+* Go
+
+    Please be sure all necessary binaries are installed (such as gocode, godef, goimports, etc..). You can easily install them with the included :GoInstallBinaries. Those binaries will be automatically downloaded and installed to your $GOBIN environment (if not set it will use $GOPATH/bin). It requires git and hg for fetching the individual Go packages.
+
+
 * Instant Markdown
 
     Instant Markdown previews from VIM  
@@ -129,6 +134,7 @@ Useful cammand/binding
 * [EasyAlign](#easyalign)            - easy align
 * [Eclim](#eclim)                    - Use eclipse function
 * [Emmet](#emmet)                    - write HTML in a CSS-like syntax
+* [Go](#go)                          - Go development plugin for Vim
 * [Latex-Box](#latexbox)             - Lightweight Toolbox for LaTeX
 * [Linediff](#linediff)              - perform diffs on blocks of code
 * [NrrwRgn](#nrrwrgn)                - focussing on a region and making the rest inaccessible
@@ -205,8 +211,8 @@ Useful cammand/binding
 
 <a href="" name="eclim"></a>
 ####[Eclim](http://eclim.org/)
-* ,i - import the class under the cursor
-* ,k - search for the javadocs of the element under the cursor
+* ,ji - import the class under the cursor
+* ,jk - search for the javadocs of the element under the cursor
 * enter - perform a context sensitive search of the element under the cursor
 
 <a href="" name="emmet"></a>
@@ -271,6 +277,22 @@ Useful cammand/binding
 ####[Greplace](https://github.com/skwp/greplace.vim)
 * `:Gsearch`  - global search and edit
 * `:Greplace` - merge changes
+
+<a href="" name="go"></a>
+####[Go](https://github.com/fatih/vim-go)
+* `,gs`  - implements
+* `,gi`  - info
+* `,gdo` - doc
+* `,gv`  - doc-vertical
+* `,gb`  - doc-browser
+* `,gr`  - run
+* `,gb`  - build
+* `,gt`  - test
+* `,gc`  - coverage
+* `,gdd` - def
+* `,gds` - def-split
+* `,gdv` - def-vertical
+* `,gdt` - def-tab
 
 <a href="" name="gundo"></a>
 ####[Gundo](https://github.com/sjl/gundo.vim)
@@ -432,7 +454,7 @@ Useful cammand/binding
 * [Vundle](https://github.com/vim-scripts/errormarker.vim)                      - plugin management
 * [Airline](https://github.com/bling/vim-airline)                               - vim status line, tmux status line and shell prompt
 * [Color Scheme](https://github.com/chriskempson/vim-tomorrow                   - theme)
-* [CtrlR](https://github.com/goldfeld/ctrlr.vim) - ex command history reverse-i - search
+* [CtrlR](https://github.com/goldfeld/ctrlr.vim)                                - ex command history reverse-i-search
 * [Errormarker](https://github.com/vim-scripts/errormarker.vim)                 - converts all compiler errors into signs
 * [Instant Markdown](https://github.com/suan/vim-instant-markdown)              - instant Markdown previews from VIM
 * [Endwise](https://github.com/tpope/vim-endwise)                               - wisely "end" endfunction/endif/more in vim script

@@ -469,7 +469,7 @@ nmap <Leader>caa <plug>NERDCommenterAltDelims
 "                            Python Mode Setting                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_rope = 0 "use jedi instead
-let g:pymode_breakpoint_bind = '<leader>B'
+au FileType py let g:pymode_breakpoint_bind = '<leader>B'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Localvimrc Setting                             "
@@ -495,7 +495,24 @@ let g:tex_flavor='latex'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Eclim Setting                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent><buffer><leader>i :JavaImport<cr>
-nnoremap <silent><buffer><leader>k :JavaDocSearch -x declarations<cr>
-nnoremap <silent><buffer><cr> :JavaSearchContext<cr>
+au FileType java nnoremap <silent><buffer><leader>ji :JavaImport<cr>
+au FileType java nnoremap <silent><buffer><leader>jk :JavaDocSearch -x declarations<cr>
+au FileType java nnoremap <silent><buffer><cr> :JavaSearchContext<cr>
 let g:EclimCompletionMethod = 'omnifunc'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 Go Setting                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <Leader>gi <Plug>(go-info)
+au FileType go nmap <Leader>gdo <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>gr <Plug>(go-run)
+au FileType go nmap <Leader>gb <Plug>(go-build)
+au FileType go nmap <Leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>gc <Plug>(go-coverage)
+au FileType go nmap <Leader>gdd <Plug>(go-def)
+au FileType go nmap <Leader>gds <Plug>(go-def-split)
+au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
