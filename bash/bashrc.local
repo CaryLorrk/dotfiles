@@ -45,12 +45,6 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 . $DOTPATH/theme/statusline.airline
 #eval $(dircolors -b $DOTPATH/theme/dircolors.solarized.256dark)
 
-export PYTHONSTARTUP=$HOME/.pythonrc.py
-
-if type "vim" > /dev/null; then
-    export EDITOR=vim
-fi
-
 ## Aliases
 if [ -d $DOTPATH/aliases ]; then
     for f in $DOTPATH/aliases/*; do
@@ -76,3 +70,17 @@ fi
 if [ -f $DOTPATH/custom.bash ]; then
     . $DOTPATH/custom.bash
 fi
+
+## Variables
+if type "vim" > /dev/null; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+export GOPATH=$HOME/go
+! [ -d $HOME/go ] && mkdir -p $HOME/go
+#export GOBIN=$HOME/.gobin
+#! [ -d $HOME/.gobin ] && mkdir -p $HOME/.gobin
+export PATH=$PATH:$HOME/.gobin
+

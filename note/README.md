@@ -30,4 +30,6 @@ Command
 * netstat -apl
     * network status with process
 
-
+Others
+------
+* default app - .config/mimeapps.list
