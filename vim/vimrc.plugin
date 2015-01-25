@@ -139,7 +139,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'suan/vim-instant-markdown'
 
 " Lightweight Toolbox for LaTeX
-Bundle 'LaTeX-Box-Team/LaTeX-Box.git'
+" Bundle 'LaTeX-Box-Team/LaTeX-Box.git'
 
 " Perform diffs on blocks of code
 Bundle 'AndrewRadev/linediff.vim'
@@ -266,10 +266,10 @@ let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
 map  f <Plug>(easymotion-bd-fl)
 map  F <Plug>(easymotion-bd-f)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
 omap <Leader>p  <Plug>(easyoperator-phrase-select)
 xmap <Leader>p  <Plug>(easyoperator-phrase-select)
 nmap d<Leader>p <Plug>(easyoperator-phrase-delete)
@@ -292,7 +292,7 @@ let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
 let g:ctrlp_switch_buffer     = 0
 let g:ctrlp_match_window      = 'order:ttb, max:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nmap <Leader>b  :CtrlPBuffer    <CR>
+nmap <Leader>bb  :CtrlPBuffer    <CR>
 nmap <leader>t  :CtrlPBufTag    <CR>
 nmap <Leader>T  :CtrlPBufTagAll <CR>
 
@@ -437,6 +437,11 @@ nmap <Leader><Leader>c :ColorToggle <CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_error_symbol   = '✗'
 let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_mode_map = { "mode": "active",
+            \ "active_filetypes": [],
+            \ "passive_filetypes": ["go"] }
+let g:syntastic_javascript_checkers = ['jshint']
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Greplace setting                              "
@@ -448,11 +453,11 @@ let g:grep_cmd_opts = '--noheading'
 "                                 Auto Pair                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:AutoPairs                   = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
-let g:AutoPairsShortcutToggle     = "<C-P>a"
+let g:AutoPairsShortcutToggle     = '<C-P>a'
 let g:AutoPairsShortcutJump       = '<C-P>n'
-let g:AutoPairsFlyMode            = 1
+let g:AutoPairsFlyMode            = 0
 let g:AutoPairsShortcutBackInsert = '<C-P>b'
-let g:AutoPairsShortcutFastWrap   = "<C-L>"
+let g:AutoPairsShortcutFastWrap   = '<C-L>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Indent Guides                                "

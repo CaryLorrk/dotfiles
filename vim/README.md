@@ -63,7 +63,7 @@ Need download Vundle firstl.
 * Syntastic
   
     for javascript  
-    npm install -g jslint
+    npm install -g jslint/jshint
       
     for php  
     apt-get install php5-cli php-codesniffer
@@ -182,7 +182,7 @@ Useful cammand/binding
 
 <a href="" name="ctrlp"></a>
 ####[CtrlP](https://github.com/kien/ctrlp.vim)
-* `,f` / `,b` / `,t` / `,T` - full path fuzzy file / buffer / buffer tag / all buffer tag finder
+* `,f` / `,bb` / `,t` / `,T` - full path fuzzy file / buffer / buffer tag / all buffer tag finder
 * `<C-R>` / `<C-D>`  - toggle regex / filename
 
 <a href="" name="dispatch"></a>
