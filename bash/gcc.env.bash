@@ -1,5 +1,5 @@
-export CC="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/gcc"
-export CXX="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/g++"
+#export CC="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/gcc"
+#export CXX="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/g++"
 export CPPFLAGS="-O2 -Wall -Wextra -pedantic -fdiagnostics-color=auto -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wformat=2 -Winit-self -Wlogical-op -Wunreachable-code -Wredundant-decls -Wswitch-default -Wswitch-enum -Wconversion -Wsign-conversion -Wstrict-overflow=5 -Wdisabled-optimization"
 #export CFLAGS="-std=c11"
 export CFLAGS=""

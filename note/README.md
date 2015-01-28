@@ -22,13 +22,15 @@ Software
 * iotop - I/O monitor
 * mytop/pgtop - mysql/postgresql monitor
 * Midori - lightweight browser
-* kchmviewer - microsoft chm viewer
-
+* kchmviewer - microsoft chm viewer 
 
 Command
 -------
 * netstat -apl
     * network status with process
+* /usr/bin/setxkbmap -option '' -option 'ctrl:swapcaps'
+    * swap ctrl and caps lock
+
 
 Others
 ------

@@ -459,7 +459,6 @@ Useful cammand/binding
 * [Instant Markdown](https://github.com/suan/vim-instant-markdown)              - instant Markdown previews from VIM
 * [Endwise](https://github.com/tpope/vim-endwise)                               - wisely "end" endfunction/endif/more in vim script
 * [Localvimrc](https://github.com/vim-scripts/localvimrc)                       - local vimrc (.lvimrc)
-* [Matchit.zip](https://github.com/vim-scripts/matchit.zip)                     - configure % to match more thane just single characters.
 * [Shebang](https://github.com/vitalk/vim-shebang)                              - vim filetype detection by the shebang
 * [Syntastic](https://github.com/scrooloose/syntastic)                          - syntax checking
 * [Repeat](https://github.com/tpope/vim-repeat)                                 - repeat previous action

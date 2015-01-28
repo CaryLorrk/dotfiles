@@ -47,7 +47,7 @@ Bundle 'mileszs/ack.vim'
 " Lean & mean status/tabline
 " Need patched font, see
 " https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 " Airline for tmux
 "Bundle 'edkolev/tmuxline.vim'
 " Airline for bash
@@ -64,10 +64,10 @@ Bundle 'carylorrk/vim-autotags-gtags'
 Bundle 'jiangmiao/auto-pairs'
 
 " calendar vimscript
-Bundle 'mattn/calendar-vim'
+" Bundle 'mattn/calendar-vim'
 
 " color ansi sequences, hex code and color name
-Bundle 'chrisbra/Colorizer'
+" Bundle 'chrisbra/Colorizer'
 "Bundle 'sjl/AnsiEsc.vim'
 
 " Color Scheme
@@ -84,15 +84,15 @@ Bundle 'goldfeld/ctrlr.vim'
 Bundle 'tpope/vim-dispatch'
 
 " Generate Doxygen documentation for C/C++, Python
-Bundle 'vim-scripts/DoxygenToolkit.vim'
+" Bundle 'vim-scripts/DoxygenToolkit.vim'
 
 " A Vim alignment plugin
 Bundle 'junegunn/vim-easy-align'
 
 " Simpler way to move
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'haya14busa/vim-easyoperator-phrase'
-Bundle 'haya14busa/vim-easyoperator-line'
+" Bundle 'haya14busa/vim-easyoperator-phrase'
+" Bundle 'haya14busa/vim-easyoperator-line'
 
 " Converts all compiler errors into signs
 Bundle 'vim-scripts/errormarker.vim'
@@ -108,26 +108,26 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 
 " Enabling opening a file in a given line
-Bundle 'bogado/file-line'
+" Bundle 'bogado/file-line'
 
 " Git for VIM
-Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-fugitive'
 " Shows a git diff in the gutter (sign column)
-Bundle 'airblade/vim-gitgutter'
+" Bundle 'airblade/vim-gitgutter'
 " Search Github and clone repos
-Bundle 'gmarik/github-search.vim'
+" Bundle 'gmarik/github-search.vim'
 
 " Go development plugin for Vim
 Bundle 'fatih/vim-go'
 
 " Global search and replace
-Bundle 'skwp/greplace.vim'
+" Bundle 'skwp/greplace.vim'
 
 " Show undo tree
 Bundle 'sjl/gundo.vim'
 
 " Visually displaying indent levels in code
-Bundle 'nathanaelkane/vim-indent-guides'
+" Bundle 'nathanaelkane/vim-indent-guides'
 
 " Instant Markdown previews from VIM
 " Need some prerequisites.
@@ -142,16 +142,13 @@ Bundle 'nathanaelkane/vim-indent-guides'
 " Bundle 'LaTeX-Box-Team/LaTeX-Box.git'
 
 " Perform diffs on blocks of code
-Bundle 'AndrewRadev/linediff.vim'
+" Bundle 'AndrewRadev/linediff.vim'
 
 " Local vimrc (.lvimrc)
-Bundle 'vim-scripts/localvimrc'
-
-" Extended % matching
-Bundle 'vim-scripts/matchit.zip'
+" Bundle 'vim-scripts/localvimrc'
 
 " Sublime Text-like multiple selection
-Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'terryma/vim-multiple-cursors'
 
 " Filesystem explorer
 Bundle 'vim-scripts/The-NERD-tree'
@@ -161,7 +158,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdcommenter'
 
 " A Narrow Region Plugin likes Emacs Narrow Region
-Bundle 'chrisbra/NrrwRgn'
+" Bundle 'chrisbra/NrrwRgn'
 
 " Improved PHP omnicompletion
 Bundle 'shawncplus/phpcomplete.vim'
@@ -183,7 +180,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'vitalk/vim-shebang'
 
 " Use CTRL-A/CTRL-X to increment dates, times, and more
-Bundle 'tpope/vim-speeddating'
+" Bundle 'tpope/vim-speeddating'
 
 " Surround
 Bundle 'tpope/vim-surround'
@@ -198,7 +195,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Tagbar'
 
 " Eclipse like task list
-Bundle 'vim-scripts/TaskList.vim'
+" Bundle 'vim-scripts/TaskList.vim'
 
 " Pairs of handy bracket mappings
 Bundle 'tpope/vim-unimpaired'

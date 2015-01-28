@@ -68,21 +68,28 @@ export -f png_to_jpg
 rename_image_to_date()
 {
     if [ -z "$1" ]; then
-        echo "usage: rename_image_to_date file_name"
+        echo "usage: rename_image_to_date file_name [OFFSET]"
         return 
     fi
     file="$1"
+    OFFSET=${2:-0}
 
     if [ ! -f "$file" ]; then
         echo Cannot find file $file
         return
     fi
 
-    DATE=`exiftool -DateTimeOriginal "$file"  | sed 's/^.*: //g' | sed 's/ /-/g' | sed 's/:/./g'`
-    if [ -z $DATE ]; then
+    #DATE=`exiftool -DateTimeOriginal "$file"  | sed 's/^.*: //g' | sed 's/ /-/g' | sed 's/:/./g'`
+    FAKE_DATE=`exiftool -DateTimeOriginal "$file" | sed 's/^.*: //g' | sed 's/:/-/' | sed 's/:/-/'`
+
+    if [ -z "$FAKE_DATE" ]; then
         echo Missing date information for "$file" 
         return
     fi
+
+    EPOCH=`date -d "$FAKE_DATE" +%s`
+    REAL_EPOCH=$(($EPOCH+$OFFSET))
+    DATE=`date -d @$REAL_EPOCH +%Y.%m.%d-%H.%M.%S`
 
     EXTENSION=${file##*.}
     if  [ ! -e "${DATE}.$EXTENSION" ]; then
@@ -108,4 +115,20 @@ rename_image_to_date()
             done
         fi
     fi
+}
+
+date_offset()
+{
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "usage: date_offset date1 date2"
+        echo "description: date1-date2 in epoch."
+        return 
+    fi
+
+    DATE1=$1
+    DATE2=$2
+
+    EPOCH1=`date -d "$DATE1" +%s`
+    EPOCH2=`date -d "$DATE2" +%s`
+    echo $(($EPOCH1-$EPOCH2))
 }
