@@ -288,8 +288,9 @@ let g:ctrlp_regexp            = 0
 let g:ctrlp_extensions        = [ 'tag', 'buffertag' ]
 let g:ctrlp_switch_buffer     = 0
 let g:ctrlp_match_window      = 'order:ttb, max:20'
+let g:ctrlp_user_command      = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nmap <Leader>bb  :CtrlPBuffer    <CR>
+nmap <Leader>b  :CtrlPBuffer    <CR>
 nmap <leader>t  :CtrlPBufTag    <CR>
 nmap <Leader>T  :CtrlPBufTagAll <CR>
 
