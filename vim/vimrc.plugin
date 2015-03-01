@@ -70,6 +70,9 @@ Bundle 'jiangmiao/auto-pairs'
 " Bundle 'chrisbra/Colorizer'
 "Bundle 'sjl/AnsiEsc.vim'
 
+" Clang Format
+Bundle 'rhysd/vim-clang-format'
+
 " Color Scheme
 Bundle 'chriskempson/vim-tomorrow-theme'
 "Bundle 'chriskempson/base16-vim'
@@ -519,3 +522,16 @@ au FileType go nmap <Leader>gdd <Plug>(go-def)
 au FileType go nmap <Leader>gds <Plug>(go-def-split)
 au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Clang Format                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
