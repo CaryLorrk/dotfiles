@@ -1,0 +1,8 @@
+#export CC="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/gcc"
+#export CXX="/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.2/g++"
+export CC="clang-3.5"
+export CXX="clang++-3.5"
+COMMONFLAGS="-O2 -Wall -Wextra -pedantic -fdiagnostics-color=auto -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wwrite-strings -Wformat=2 -Winit-self -Wunreachable-code -Wredundant-decls -Wswitch-default -Wswitch-enum -Wconversion -Wsign-conversion -Wstrict-overflow=5 -Wdisabled-optimization"
+#export CFLAGS="$COMMONFLAGS -std=c11"
+export CFLAGS="$COMMONFLAGS"
+export CXXFLAGS="$COMMONFLAGS -std=c++14 -Wctor-dtor-privacy -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Weffc++"
