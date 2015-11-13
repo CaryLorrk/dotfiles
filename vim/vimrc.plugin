@@ -26,6 +26,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'vim-scripts/django.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'cespare/vim-toml'
 
 " Text objects
 Bundle 'kana/vim-textobj-user'
@@ -190,6 +191,9 @@ Bundle 'tpope/vim-surround'
 
 " A fancy start screen
 "Bundle 'mhinz/vim-startify'
+
+" Rust development enviroment
+Plugin 'rust-lang/rust.vim'
 
 " Syntax checking
 Bundle 'scrooloose/syntastic'
