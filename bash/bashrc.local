@@ -42,7 +42,7 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-#eval $(dircolors -b $DOTPATH/theme/dircolors.solarized.256dark)
+eval $(dircolors -b $DOTPATH/theme/dircolors.solarized.256dark)
 
 ## Aliases
 if [ -d $DOTPATH/aliases ]; then
@@ -76,4 +76,7 @@ if type "vim" > /dev/null; then
 else
     export EDITOR=vi
 fi
+
 export PYTHONSTARTUP=$HOME/.pythonrc.py
+
+source $DOTPATH/gcc.env.bash
