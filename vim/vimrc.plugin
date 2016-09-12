@@ -130,6 +130,10 @@ Bundle 'fatih/vim-go'
 " Show undo tree
 Bundle 'sjl/gundo.vim'
 
+"Vim plugin to work with R
+"Bundle 'jalvesaq/Nvim-R'
+Bundle 'vim-scripts/Vim-R-plugin'
+
 " Visually displaying indent levels in code
 " Bundle 'nathanaelkane/vim-indent-guides'
 
@@ -193,7 +197,7 @@ Bundle 'tpope/vim-surround'
 "Bundle 'mhinz/vim-startify'
 
 " Rust development enviroment
-Plugin 'rust-lang/rust.vim'
+Bundle 'rust-lang/rust.vim'
 
 " Syntax checking
 Bundle 'scrooloose/syntastic'
@@ -217,6 +221,8 @@ Bundle 'vim-scripts/YankRing.vim'
 " ./install.sh --clang-completer
 " if jedi is not founded, run 'git submodule update --init --recursive' at YCM
 Bundle 'Valloric/YouCompleteMe'
+" Generates config files for YouCompleteMe
+Bundle 'rdnetto/YCM-Generator'
 
 " Autocomplete
 " Bundle 'Shougo/neocomplcache.vim'
@@ -348,6 +354,10 @@ nmap <Leader>yy :YcmDiags                                   <CR>
 nmap <Leader>yf :YcmForceCompileAndDiagnostics              <CR>
 nmap <Leader>yd :YcmCompleter GoToDefinitionElseDeclaration <CR>
 nmap <Leader>yc :YcmCompleter GoToDeclaration               <CR>
+nmap <Leader>yi :YcmCompleter GoToInclude                   <CR>
+nmap <Leader>yt :YcmCompleter GetType                       <CR>
+nmap <Leader>yp :YcmCompleter GetParent                     <CR>
+nmap <Leader>yo :YcmCompleter GetDoc                        <CR>
 let g:ycm_complete_in_comments                      = 1
 let g:ycm_collect_identifiers_from_tags_files       = 1
 let g:ycm_min_num_of_chars_for_completion           = 1
