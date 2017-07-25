@@ -255,7 +255,7 @@ if has("cscope")
     "
 
     " open in place
-    nmap <LocalLeader>s  :execute "cs find s " . expand("<cword>")<CR>
+    nmap <LocalLeader>sj  :execute "cs find s " . expand("<cword>")<CR>
     nmap <LocalLeader>g  :execute "cs find g " . expand("<cword>")<CR>
     nmap <LocalLeader>c  :execute "cs find c " . expand("<cword>")<CR>
     nmap <LocalLeader>t  :execute "cs find t " . expand("<cword>")<CR>
