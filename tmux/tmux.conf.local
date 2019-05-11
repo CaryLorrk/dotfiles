@@ -11,6 +11,7 @@ bind-key -n M-r \
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
 bind-key \ confirm-before kill-session
 bind-key M-[ copy-mode
@@ -77,4 +78,3 @@ bind-key -T edit-mode-vi Down send-keys history-down
 
 # set <ESC> timeout
 set -sg escape-time 100
-

@@ -68,6 +68,12 @@ set hid "change buffer - without saving
 
 set number
 set relativenumber
+nmap <Leader>z :call ToggleLineNumber()<CR>
+
+function! ToggleLineNumber()
+    let &number = ! &number
+    let &relativenumber = &number
+endfunction
 
 set backspace=2
 set clipboard=unnamed,unnamedplus

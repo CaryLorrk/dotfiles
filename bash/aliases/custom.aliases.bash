@@ -33,3 +33,5 @@ alias diskspace="du -S -B M | sort -n -r |more"
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 
 alias so='source ~/.bashrc'
+
+alias cpr='rsync -aHAXv --progress -e "ssh -T -c arcfour -o Compression=no -x"'
