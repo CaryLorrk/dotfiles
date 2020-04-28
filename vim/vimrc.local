@@ -1,20 +1,16 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  General                                   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" sets how many lines of history VIM has to remember
-set history=1000
+" set longer history
+set history=10000
 
-set nocp
 set encoding=utf-8
 
-" store session option
-set ssop-=options     " do not store global and local values in a session
-"set ssop-=folds       " do not store folds
-
+" do not store global and local values in a session
+set sessionoptions-=options
+set viewoptions-=options
 
 " set to auto read when a file is changed from the outside
 set autoread
 
+" set leader keys
 let mapleader      = ","
 let maplocalleader = ""
 
@@ -23,76 +19,86 @@ set notimeout
 set ttimeout
 set ttimeoutlen=100
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Files/Backups                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Files/Backups
+
 " make backup file
 set backup
 set backupcopy=yes
 
-" where to put backup file (don't forget to make a backup directory)
+" where to put backup file
 let s:backupdir = $HOME . "/.vim/backup" . expand('%:p:h')
 if !isdirectory(s:backupdir)
     call mkdir(s:backupdir, "p")
 endif
-let &backupdir  = s:backupdir . ",$HOME/.tmp/vim/backup,./.backup,.,/tmp"
+let &backupdir = s:backupdir
 
-" directory is the directory for temp file
-let s:directory = $HOME."/.vim/tmp" . expand('%:p:h')
+" where to put temp file
+let s:directory = $HOME . "/.vim/tmp" . expand('%:p:h')
 if !isdirectory(s:directory)
     call mkdir(s:directory, "p")
 endif
-let &directory  = s:directory . ",$HOME/.tmp/vim/tmp,.,/var/tmp,/tmp"
+let &directory = s:directory
 
-" Undo persistence
+" undofile persistence
 set undofile
-let s:undodir   = $HOME . "/.vim/undofile"
+let s:undodir = $HOME . "/.vim/undo"
 if !isdirectory(s:undodir)
     call mkdir(s:undodir, "p")
 endif
-let &undodir    = s:undodir
+let &undodir = s:undodir
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               User Interface                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" minimal number of screen lines to keep above and below the cursor
+set scrolloff=5
 
-" set 7 lines to the curors - when moving vertical
-set so=5
-
+" command-line complete longest common string
 set wildmode=longest:full
-set wildmenu "turn on WiLd menu
+set wildmenu
 
-set ruler "always show current position
+" show current position
+set ruler
 
-set hid "change buffer - without saving
+" keep the changed buffer without saving it
+set hidden
 
+" line numbers
 set number
 set relativenumber
 nmap <Leader>z :call ToggleLineNumber()<CR>
-
 function! ToggleLineNumber()
     let &number = ! &number
     let &relativenumber = &number
 endfunction
 
-set backspace=2
+" make backspace work like most other programs 
+set backspace=indent,eol,start
+
+" delete comment character when joining commented lines
+set formatoptions+=j 
+
+" using the clipboard as the default register
 set clipboard=unnamed,unnamedplus
 
-set ignorecase "ignore case when searching
+" ignore case when searching
+set ignorecase 
+" override the 'ignorecase' option if the search pattern contains upper case characters
 set smartcase
+"highlight search things
+set hlsearch 
+" while typing a search command, show where the pattern, as it was typed so far, matches. 
+set incsearch
 
-set hlsearch "highlight search things
-set incsearch "makes search act like search in modern browsers
+"set magic on for regular expressions
+set magic 
 
-set magic "set magic on, for regular expressions
-
-" do not redraw while running macros (much faster) (LazyRedraw)
+" do not redraw while running macros (much faster)
 set lazyredraw
 
-set showmatch "show matching bracets when text indicator is over them
-set mat=2 "how many tenths of a second to blink
+" when a bracket is inserted, briefly jump to the matching one.
+set showmatch 
+set matchtime=5
+runtime macros/matchit.vim
 
-" Enable basic mouse behavior such as resizing buffers.
+" enable basic mouse behavior such as resizing buffers.
 set mouse=a
 if exists('$TMUX') " Support resizing in tmux
   set ttymouse=xterm2
@@ -101,59 +107,46 @@ endif
 " no sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
-set tm=500
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Colors and Fonts                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable "enable syntax hl
+" colors and fonts
+syntax enable
 set background=dark
 set cursorline
+set t_Co=16
 hi CursorLine term=bold cterm=bold
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                            Text, Tab and Indent                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" text, tab, and indent
 set shiftwidth=4
 set tabstop=4
 set expandtab
 set smarttab
-set ai
-set si
-
+set autoindent
+set smartindent
 set wrap
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Visual Mode                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
-
 function! VisualSearch(direction) range
-	let l:saved_reg     = @"
-	execute "normal! vgvy"
+    let l:saved_reg = @"
+    execute "normal! vgvy"
 
-	let l:pattern       = escape(@", '\\/.*$^~[]')
-	let l:pattern       = substitute(l:pattern, "\n$", "", "")
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-	if a:direction     == 'b'
-		execute "normal ?" . l:pattern . "^M"
-	elseif a:direction == 'gv'
-		call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-	elseif a:direction == 'f'
-		execute "normal /" . l:pattern . "^M"
-	endif
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
 
-	let @/ = l:pattern
-	let @" = l:saved_reg
+    let @/ = l:pattern
+    let @" = l:saved_reg
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Tabs and Buffers                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart way to move btw. windows
+" smart way to move between windows
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
@@ -162,23 +155,16 @@ nmap <C-l> <C-W>l
 " Tab configuration
 nmap <C-W>c :tabnew      <CR>
 nmap <C-W>K :tabclose    <CR>
-nmap <C-W>p :tabp        <CR>
-nmap <C-W>n :tabn        <CR>
+nmap <C-W>p :tabprevious <CR>
+nmap <C-W>n :tabnext     <CR>
 nmap [g     :tabprevious <CR>
 nmap ]g     :tabnext     <CR>
 nmap [G     :tabfirst    <CR>
 nmap ]G     :tablast     <CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                 Statusline                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This would be overrided by airline
 " Always hide the statusline
 set laststatus=2
-
-" Format the statusline
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-
 function! CurDir()
 	let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
 	return curdir
@@ -192,28 +178,28 @@ function! HasPaste()
 	endif
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Mark setting                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader>ms :marks <CR>
-nmap <Leader>md :delm! <CR>
+" list all marks
+nmap <Leader>ml :marks <CR>
+" delete all marks
+nmap <Leader>md :delmarks! <CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Fold Setting                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" folding by syntax
-"set foldmethod=syntax
 set foldmethod=indent
-"set foldmethod=manual
-" Open all folding when open a file
+" open all folding when open a file
 autocmd BufWinEnter * normal zR
+" unfold by space
 nnoremap <Space> za
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Cscope setting                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OmniCpp setting
+autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest
+let OmniCpp_MayCompleteDot      = 1 " autocomplete with .
+let OmniCpp_MayCompleteArrow    = 1 " autocomplete with ->
+let OmniCpp_MayCompleteScope    = 1 " autocomplete with ::
+let OmniCpp_SelectFirstItem     = 2 " select first item (but don't insert)
+let OmniCpp_NamespaceSearch     = 2 " search namespaces in this and included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
+
 " This tests to see if vim was configured with the '--enable-cscope' option
-" when it was compiled.  If it wasn't, time to recompile vim...
 if has("cscope")
 
     " use both global and ctag for 'ctrl-]', ':ta', and 'vim -t'
@@ -291,22 +277,6 @@ if has("cscope")
     nmap <LocalLeader>vd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Omnicpp setting                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest
-let OmniCpp_MayCompleteDot      = 1 " autocomplete with .
-let OmniCpp_MayCompleteArrow    = 1 " autocomplete with ->
-let OmniCpp_MayCompleteScope    = 1 " autocomplete with ::
-let OmniCpp_SelectFirstItem     = 2 " select first item (but don't insert)
-let OmniCpp_NamespaceSearch     = 2 " search namespaces in this and included files
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Rname Tabs                                  "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
 if exists("+showtabline")
