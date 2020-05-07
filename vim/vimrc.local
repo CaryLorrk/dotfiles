@@ -26,14 +26,14 @@ set backup
 set backupcopy=yes
 
 " where to put backup file
-let s:backupdir = $HOME . "/.vim/backup" . expand('%:p:h')
+let s:backupdir = $HOME . "/.vim/backup/" . expand('%:p:h')
 if !isdirectory(s:backupdir)
     call mkdir(s:backupdir, "p")
 endif
 let &backupdir = s:backupdir
 
 " where to put temp file
-let s:directory = $HOME . "/.vim/tmp" . expand('%:p:h')
+let s:directory = $HOME . "/.vim/tmp/" . expand('%:p:h')
 if !isdirectory(s:directory)
     call mkdir(s:directory, "p")
 endif
