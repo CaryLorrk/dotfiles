@@ -7,27 +7,27 @@ concat_video() {
 }
 export -f concat_video
 
-burn_subtitle() {
-    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
-        echo "usage: burn_subtitle video subtitle output [font_size]"
-        return
-    fi
-
-    echo_and_run "ffmpeg -hwaccel cuvid -i '$1' -vf subtitles='$2':force_style='FontSize=${4-24}' -map 0:v -map 0:a -c:a copy -c:v h264_nvenc '$3'"
-}
-export -f burn_subtitle
-
 cuda_burn_subtitle() {
-
     if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
         echo "usage: burn_subtitle video subtitle output [font_size]"
         return
     fi
 
-    echo_and_run "ffmpeg -i '$1' -vf subtitles='$2':force_style='FontSize=${4-24}' -map 0:v -map 0:a -c:a copy -c:v libx264 '$3'"
-
+    echo_and_run "ffmpeg -hwaccel cuvid -i '$1' -vf subtitles='$2':force_style='FontSize=${4-32}' -map 0:v -map 0:a -c:a copy -c:v h264_nvenc '$3'"
 }
 export -f cuda_burn_subtitle
+
+burn_subtitle() {
+
+    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+        echo "usage: burn_subtitle video subtitle output [font_size]"
+        return
+    fi
+
+    echo_and_run "ffmpeg -i '$1' -vf subtitles='$2':force_style='FontSize=${4-32}' -map 0:v -map 0:a -c:a copy -c:v libx264 '$3'"
+
+}
+export -f burn_subtitle
 
 burn_subtitle_ass() {
     if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
